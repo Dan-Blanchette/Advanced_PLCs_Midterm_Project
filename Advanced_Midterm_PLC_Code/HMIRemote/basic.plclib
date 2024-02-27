@@ -1,4 +1,4 @@
-﻿<lib version="1.0.0" name="c:\program files (x86)\schneider electric\ecostruxuremachineexperthvac\catalog\freeadvance\..\..\Application\Libraries\basic.plclib" fullXml="true" link="true">
+﻿<lib version="1.0.1" name="basic" fullXml="true">
 	<descr/>
 	<libWorkspace>
 		<folder id="7" name="basic">
@@ -340,7 +340,7 @@ This means each time the function is called up, Q will return FALSE until CLK ha
 				</outputVars>
 				<localVars>
 					<var name="m" type="BOOL">
-						<initValue>TRUE</initValue>
+						<initValue>FALSE</initValue>
 					</var>
 				</localVars>
 			</vars>
@@ -419,10 +419,10 @@ This means each time the function is called up, Q will return FALSE until CLK ha
 			<sourceCode type="IL">
 				<![CDATA[
 	LDN		clk
-	AND		m
+	ANDN	m
 	ST		q
 
-	LD		clk
+	LDN		clk
 	ST		m
 ]]>
 			</sourceCode>

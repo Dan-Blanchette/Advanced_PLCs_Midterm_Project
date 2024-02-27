@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- #DEFINE PREFIX brentMidterm -->
 <devicetemplate>
-	<deviceinfo caption="brentMidterm" name="brentMidterm" version="0.0" icon="img\application.ico" deviceid="brentMidterm" devicetype="application" PLCApplicationID="midterm">
+	<deviceinfo caption="brentMidterm" name="brentMidterm" version="0.0" icon="img\application.ico" deviceid="brentMidterm" devicetype="application" PLCApplicationID="brentMidte">
 		<description>brentMidterm Application</description>
 		<protocols><protocol>TM172O_668p13_appl</protocol></protocols>
 	</deviceinfo>
@@ -59,9 +59,9 @@
 								<xs:attribute name="oncreatenode" type="xs:string" fixed="configurator.OnCreateDeviceChild"/>
 								<xs:attribute name="onloadnode" type="xs:string" fixed="configurator.OnLoadDeviceChild"/>
 								<xs:attribute name="ondeletenode" type="xs:string" fixed="configurator.OnDeleteDeviceChild"/>
-								<xs:attribute name="PLCProject" type="xs:string" fixed=""/>
-								<xs:attribute name="HMIProject" type="xs:string" fixed="HMIRemote\midterm.RSM"/>
-								<xs:attribute name="HMIRemoteProject" type="xs:string" fixed="HMIRemote\Download\midterm.BIN"/>
+								<xs:attribute name="PLCProject" type="xs:string" fixed="brentMidterm.RSM"/>
+								<xs:attribute name="HMIProject" type="xs:string" fixed="HMIRemote\brentMidterm.RSM"/>
+								<xs:attribute name="HMIRemoteProject" type="xs:string" fixed="HMIRemote\Download\brentMidterm.BIN"/>
 								<xs:attribute name="noAutoGenCaption" type="xs:boolean" fixed="true"/>
 							</xs:extension>
 						</xs:complexContent>
