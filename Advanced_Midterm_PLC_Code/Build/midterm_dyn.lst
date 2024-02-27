@@ -1,0 +1,129 @@
+***********************************************************************
+*
+*	DYNAMIC LINK AND INDIRECT ALLOCATION LISTING FOR: midterm
+*
+***********************************************************************
+
+
+***************************************************
+	 FIRST CODE AREA
+***************************************************
+
+***************************************************
+	 DATABLOCK PATCHES
+***************************************************
+*
+* List of data blocks that will be checked run-time for consistency with
+* their definition available at compile-time
+*
+*
+*	REQUIREMENTS for DATA BLOCK %Q1
+*		Process image: 0
+*		Number of elements: 6
+*		Data size (bytes): 1
+0000	00 02 01 00 06 00 00 00 01 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %I1
+*		Process image: 1
+*		Number of elements: 8
+*		Data size (bytes): 2
+000C	01 01 01 00 08 00 00 00 02 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %M100
+*		Process image: 0
+*		Number of elements: 416
+*		Data size (bytes): 2
+0018	00 00 64 00 A0 01 00 00 02 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %M110
+*		Process image: 0
+*		Number of elements: 5000
+*		Data size (bytes): 2
+0024	00 00 6E 00 88 13 00 00 02 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %I0
+*		Process image: 1
+*		Number of elements: 2
+*		Data size (bytes): 1
+0030	01 01 00 00 02 00 00 00 01 00 00 00 
+
+*
+* List of all references to data allocated on data blocks
+* along with the whole information required by the run-time linker
+*
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #0 OF DATA BLOCK %Q1
+0000	00 00 01 00 00 00 00 00 02 01 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042D8
+000C	D8 42 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #1 OF DATA BLOCK %I0
+0010	00 00 00 00 01 00 00 00 01 01 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043A4
+001C	A4 43 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #386 OF DATA BLOCK %M100
+0020	00 00 64 00 82 01 00 00 00 02 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004200
+002C	00 42 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #2 OF DATA BLOCK %I1
+0030	00 00 01 00 02 00 00 00 01 02 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043A8
+003C	A8 43 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #0 OF DATA BLOCK %I0
+0040	00 00 00 00 00 00 00 00 01 01 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043A0
+004C	A0 43 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #1 OF DATA BLOCK %Q1
+0050	00 00 01 00 01 00 00 00 02 01 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004368
+005C	68 43 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #0 OF DATA BLOCK %M110
+0060	00 00 6E 00 00 00 00 00 00 04 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000432C
+006C	2C 43 00 00 
+
+
+***************************************************
+	 FUNCTION PATCHES
+***************************************************
+
+NAME: sysDBase_SetExtTable  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004280
+
+NAME: UDINT_TO_REAL  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004334
+
+NAME: DINT_TO_REAL  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004338
+
+NAME: DIV_REAL  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000433C
