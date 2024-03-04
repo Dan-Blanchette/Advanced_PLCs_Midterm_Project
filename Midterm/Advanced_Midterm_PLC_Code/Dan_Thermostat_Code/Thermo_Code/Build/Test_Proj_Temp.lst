@@ -1,0 +1,3288 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: Test_Proj_Temp
+*	COMPILER VERSION: 5.20.0.53
+*
+***********************************************************************
+
+**************************************************
+	CODE GENERATOR SUBROUTINES
+**************************************************
+
+$$MOD:
+0800C130  FB90 F3F1		sdiv r3, r0, r1
+0800C134  4359     		mul r1, r1, r3
+0800C136  EBC1 0000		rsb r0, r1, r0
+0800C13A  4770     		bx lr
+
+$$MOD_U:
+0800C13C  FBB0 F3F1		udiv r3, r0, r1
+0800C140  4359     		mul r1, r1, r3
+0800C142  EBC1 0000		rsb r0, r1, r0
+0800C146  4770     		bx lr
+
+**************************************************
+	List function block: DrawBackPage
+**************************************************
+
+FUNCTION_BLOCK DrawBackPage
+
+        VAR_INPUT
+IsOpening : BOOL;
+CurrPageId : UINT;
+	END_VAR
+
+        VAR_OUTPUT
+BackPageId : UINT;
+	END_VAR
+
+        VAR_EXTERNAL
+	{G:"Back_buffer"}
+$giBackBufferCurr : INT := -1;
+$giBackBufferFirst : INT := -1;
+$giBackBufferLast : INT := -1;
+$guiBackBuffer : ARRAY[0..9] OF UINT;
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+0800C148  E92D 4040		stmdb sp!, { r6, lr }
+0800C14C  462E     		mov r6, r5
+
+#0		{SRC:DrawBackPage}
+#1		(*$WAITSWITCH$*)
+#2		
+#3		
+#4			(* IF IsOpening *)
+#5			LD		IsOpening	{LNXT:3|-1|-1}
+(-) UNDEF
+0800C14E  7830     		ldrb r0, [r6]
+
+#6			JMPCN	$label0	{LNXT:3|8|41}
+(-) BOOL
+0800C150  2800     		cmp r0, #0
+0800C152  F000 80F2		beq #484 ; 0x0800C33A
+
+
+#7		
+#8			(* THEN *)
+#9		
+#10				(* $giBackBufferCurr := $giBackBufferCurr + 1; *)
+#11				LD		$giBackBufferCurr	{LNXT:8|9|-1}
+(*) UNDEF
+0800C156  F8DF 7254		ldr r7, [pc, #+596] ; 0x2000C816
+0800C15A  F9B7 0000		ldrsh r0, [r7]
+
+#12				ADD		1	{LNXT:8|9|-1}
+(-) INT
+0800C15E  1C40     		add r0, r0, #1
+
+#13				ST		$giBackBufferCurr	{LNXT:8|9|-1}
+(*) INT
+0800C160  F8DF 7248		ldr r7, [pc, #+584] ; 0x2000C816
+0800C164  8038     		strh r0, [r7]
+
+#14		
+#15		
+#16				(* IF $giBackBufferCurr >= 10 *)
+#17				LD		$giBackBufferCurr	{LNXT:9|-1|-1}
+(*) UNDEF
+0800C166  F8DF 7244		ldr r7, [pc, #+580] ; 0x2000C816
+0800C16A  F9B7 0000		ldrsh r0, [r7]
+
+#18				GE		10	{LNXT:9|-1|-1}
+(*) INT
+0800C16E  280A     		cmp r0, #10
+0800C170  BFB8 2000		ltmov r0, #0
+0800C174  BFA8 2001		gemov r0, #1
+
+#19				JMPCN	$label2	{LNXT:9|10|12}
+(-) BOOL
+0800C178  2800     		cmp r0, #0
+0800C17A  D004     		beq #8 ; 0x0800C186
+
+
+#20		
+#21				(* THEN *)
+#22		
+#23					(* $giBackBufferCurr := 0; *)
+#24					MOVE		0,$giBackBufferCurr	{LNXT:10|12|-1}
+(*) BOOL
+0800C17E  2000     		mov r0, #0 ; 0
+0800C180  F8DF 7228		ldr r7, [pc, #+552] ; 0x2000C816
+0800C184  8038     		strh r0, [r7]
+
+#25		
+#26		$label2:
+#27				(* END_IF *)
+#28		
+#29				(* $guiBackBuffer[ $giBackBufferCurr ] := CurrPageId; *)
+#30				MOVE		CurrPageId,$guiBackBuffer[$giBackBufferCurr]	{LNXT:12|13|-1}
+(*) INT
+0800C186  F8DF 7218		ldr r7, [pc, #+536] ; 0x2
+0800C18A  5BF0     		ldrh r0, [r6, +r7]
+0800C18C  F8DF 721C		ldr r7, [pc, #+540] ; 0x2000C816
+0800C190  F9B7 5000		ldrsh r5, [r7]
+0800C194  F8DF 7220		ldr r7, [pc, #+544] ; 0x2000C874
+0800C198  EB07 0745		add r7, r7, r5, lsl #1
+0800C19C  8038     		strh r0, [r7]
+
+#31		
+#32		
+#33				(* IF $giBackBufferFirst = -1 *)
+#34				LD		$giBackBufferFirst	{LNXT:13|-1|-1}
+(*) UNDEF
+0800C19E  F8DF 7210		ldr r7, [pc, #+528] ; 0x2000C818
+0800C1A2  F9B7 0000		ldrsh r0, [r7]
+
+#35				EQ		-1	{LNXT:13|-1|-1}
+(*) INT
+0800C1A6  F04F 37FF		mov r7, #4294967295 ; 4294967295
+0800C1AA  42B8     		cmp r0, r7
+0800C1AC  BF18 2000		nemov r0, #0
+0800C1B0  BF08 2001		eqmov r0, #1
+
+#36				JMPCN	$label3	{LNXT:13|14|15}
+(-) BOOL
+0800C1B4  2800     		cmp r0, #0
+0800C1B6  D006     		beq #12 ; 0x0800C1C6
+
+
+#37		
+#38				(* THEN *)
+#39		
+#40					(* $giBackBufferFirst := 0; *)
+#41					MOVE		0,$giBackBufferFirst	{LNXT:14|23|-1}
+(*) BOOL
+0800C1BA  2000     		mov r0, #0 ; 0
+0800C1BC  F8DF 71F0		ldr r7, [pc, #+496] ; 0x2000C818
+0800C1C0  8038     		strh r0, [r7]
+
+#42					JMP		$label4	{LNXT:13|14|15}
+(-) INT
+0800C1C2  E03D     		b #122 ; 0x0800C240
+
+
+#43		$label3:
+#44		
+#45				(* ELSIF $giBackBufferCurr = $giBackBufferFirst AND $giBackBufferFirst <> $giBackBufferLast *)
+#46				LD		$giBackBufferFirst	{LNXT:15|-1|-1}
+(*) UNDEF
+0800C1C6  F8DF 71E8		ldr r7, [pc, #+488] ; 0x2000C818
+0800C1CA  F9B7 0000		ldrsh r0, [r7]
+
+#47				NE		$giBackBufferLast	{LNXT:15|-1|-1}
+(*) INT
+0800C1CE  F8DF 71E4		ldr r7, [pc, #+484] ; 0x2000C81A
+0800C1D2  F9B7 7000		ldrsh r7, [r7]
+0800C1D6  42B8     		cmp r0, r7
+0800C1D8  BF08 2000		eqmov r0, #0
+0800C1DC  BF18 2001		nemov r0, #1
+
+#48				AND(		$giBackBufferCurr	{LNXT:15|-1|-1}
+(*) BOOL
+0800C1E0  B082     		sub sp, sp, #8
+0800C1E2  F8CD 0000		str r0, [sp]
+0800C1E6  F8DF 71C4		ldr r7, [pc, #+452] ; 0x2000C816
+0800C1EA  F9B7 0000		ldrsh r0, [r7]
+
+#49				EQ		$giBackBufferFirst	{LNXT:15|-1|-1}
+(*) INT
+0800C1EE  F8DF 71C0		ldr r7, [pc, #+448] ; 0x2000C818
+0800C1F2  F9B7 7000		ldrsh r7, [r7]
+0800C1F6  42B8     		cmp r0, r7
+0800C1F8  BF18 2000		nemov r0, #0
+0800C1FC  BF08 2001		eqmov r0, #1
+
+#50				)	{LNXT:15|-1|-1}
+(*) BOOL
+0800C200  4607     		mov r7, r0
+0800C202  F8DD 0000		ldr r0, [sp]
+0800C206  B002     		add sp, sp, #8
+0800C208  4038     		and r0, r0, r7
+
+#51				JMPCN	$label4	{LNXT:15|16|23}
+(-) BOOL
+0800C20A  2800     		cmp r0, #0
+0800C20C  D018     		beq #48 ; 0x0800C240
+
+
+#52		
+#53				(* THEN *)
+#54		
+#55					(* $giBackBufferFirst := $giBackBufferFirst + 1; *)
+#56					LD		$giBackBufferFirst	{LNXT:16|17|-1}
+(*) UNDEF
+0800C210  F8DF 719C		ldr r7, [pc, #+412] ; 0x2000C818
+0800C214  F9B7 0000		ldrsh r0, [r7]
+
+#57					ADD		1	{LNXT:16|17|-1}
+(-) INT
+0800C218  1C40     		add r0, r0, #1
+
+#58					ST		$giBackBufferFirst	{LNXT:16|17|-1}
+(*) INT
+0800C21A  F8DF 7194		ldr r7, [pc, #+404] ; 0x2000C818
+0800C21E  8038     		strh r0, [r7]
+
+#59		
+#60		
+#61					(* IF $giBackBufferFirst = 10 *)
+#62					LD		$giBackBufferFirst	{LNXT:17|-1|-1}
+(*) UNDEF
+0800C220  F8DF 718C		ldr r7, [pc, #+396] ; 0x2000C818
+0800C224  F9B7 0000		ldrsh r0, [r7]
+
+#63					EQ		10	{LNXT:17|-1|-1}
+(*) INT
+0800C228  280A     		cmp r0, #10
+0800C22A  BF18 2000		nemov r0, #0
+0800C22E  BF08 2001		eqmov r0, #1
+
+#64					JMPCN	$label5	{LNXT:17|18|23}
+(-) BOOL
+0800C232  2800     		cmp r0, #0
+0800C234  D004     		beq #8 ; 0x0800C240
+
+
+#65		
+#66					(* THEN *)
+#67		
+#68						(* $giBackBufferFirst := 0; *)
+#69						MOVE		0,$giBackBufferFirst	{LNXT:18|23|-1}
+(*) BOOL
+0800C238  2000     		mov r0, #0 ; 0
+0800C23A  F8DF 7174		ldr r7, [pc, #+372] ; 0x2000C818
+0800C23E  8038     		strh r0, [r7]
+
+#70		
+#71		$label5:
+#72					(* END_IF *)
+#73		
+#74		$label4:
+#75				(* END_IF *)
+#76		
+#77		
+#78				(* IF $giBackBufferCurr = $giBackBufferFirst *)
+#79				LD		$giBackBufferCurr	{LNXT:23|-1|-1}
+(*) UNDEF
+0800C240  F8DF 7168		ldr r7, [pc, #+360] ; 0x2000C816
+0800C244  F9B7 0000		ldrsh r0, [r7]
+
+#80				EQ		$giBackBufferFirst	{LNXT:23|-1|-1}
+(*) INT
+0800C248  F8DF 7164		ldr r7, [pc, #+356] ; 0x2000C818
+0800C24C  F9B7 7000		ldrsh r7, [r7]
+0800C250  42B8     		cmp r0, r7
+0800C252  BF18 2000		nemov r0, #0
+0800C256  BF08 2001		eqmov r0, #1
+
+#81				JMPCN	$label6	{LNXT:23|24|25}
+(-) BOOL
+0800C25A  2800     		cmp r0, #0
+0800C25C  D007     		beq #14 ; 0x0800C26E
+
+
+#82		
+#83				(* THEN *)
+#84		
+#85					(* $giBackBufferLast := -1; *)
+#86					MOVE		-1,$giBackBufferLast	{LNXT:24|32|-1}
+(*) BOOL
+0800C260  F04F 30FF		mov r0, #4294967295 ; 4294967295
+0800C264  F8DF 714C		ldr r7, [pc, #+332] ; 0x2000C81A
+0800C268  8038     		strh r0, [r7]
+
+#87					JMP		$label9	{LNXT:23|24|25}
+(-) INT
+0800C26A  E042     		b #132 ; 0x0800C2F2
+
+
+#88		$label6:
+#89		
+#90				(* ELSIF $giBackBufferCurr = 0 AND $giBackBufferFirst <> 9 *)
+#91				LD		$giBackBufferFirst	{LNXT:25|-1|-1}
+(*) UNDEF
+0800C26E  F8DF 7140		ldr r7, [pc, #+320] ; 0x2000C818
+0800C272  F9B7 0000		ldrsh r0, [r7]
+
+#92				NE		9	{LNXT:25|-1|-1}
+(*) INT
+0800C276  2809     		cmp r0, #9
+0800C278  BF08 2000		eqmov r0, #0
+0800C27C  BF18 2001		nemov r0, #1
+
+#93				AND(		$giBackBufferCurr	{LNXT:25|-1|-1}
+(*) BOOL
+0800C280  B082     		sub sp, sp, #8
+0800C282  F8CD 0000		str r0, [sp]
+0800C286  F8DF 7124		ldr r7, [pc, #+292] ; 0x2000C816
+0800C28A  F9B7 0000		ldrsh r0, [r7]
+
+#94				EQ		0	{LNXT:25|-1|-1}
+(*) INT
+0800C28E  2800     		cmp r0, #0
+0800C290  BF18 2000		nemov r0, #0
+0800C294  BF08 2001		eqmov r0, #1
+
+#95				)	{LNXT:25|-1|-1}
+(*) BOOL
+0800C298  4607     		mov r7, r0
+0800C29A  F8DD 0000		ldr r0, [sp]
+0800C29E  B002     		add sp, sp, #8
+0800C2A0  4038     		and r0, r0, r7
+
+#96				JMPCN	$label7	{LNXT:25|26|27}
+(-) BOOL
+0800C2A2  2800     		cmp r0, #0
+0800C2A4  D006     		beq #12 ; 0x0800C2B4
+
+
+#97		
+#98				(* THEN *)
+#99		
+#100					(* $giBackBufferLast := 9; *)
+#101					MOVE		9,$giBackBufferLast	{LNXT:26|32|-1}
+(*) BOOL
+0800C2A8  2009     		mov r0, #9 ; 9
+0800C2AA  F8DF 7108		ldr r7, [pc, #+264] ; 0x2000C81A
+0800C2AE  8038     		strh r0, [r7]
+
+#102					JMP		$label9	{LNXT:25|26|27}
+(-) INT
+0800C2B0  E01F     		b #62 ; 0x0800C2F2
+
+
+#103		$label7:
+#104		
+#105				(* ELSIF $giBackBufferCurr <> $giBackBufferFirst *)
+#106				LD		$giBackBufferCurr	{LNXT:27|-1|-1}
+(*) UNDEF
+0800C2B4  F8DF 70F4		ldr r7, [pc, #+244] ; 0x2000C816
+0800C2B8  F9B7 0000		ldrsh r0, [r7]
+
+#107				NE		$giBackBufferFirst	{LNXT:27|-1|-1}
+(*) INT
+0800C2BC  F8DF 70F0		ldr r7, [pc, #+240] ; 0x2000C818
+0800C2C0  F9B7 7000		ldrsh r7, [r7]
+0800C2C4  42B8     		cmp r0, r7
+0800C2C6  BF08 2000		eqmov r0, #0
+0800C2CA  BF18 2001		nemov r0, #1
+
+#108				JMPCN	$label8	{LNXT:27|28|30}
+(-) BOOL
+0800C2CE  2800     		cmp r0, #0
+0800C2D0  D00A     		beq #20 ; 0x0800C2E8
+
+
+#109		
+#110				(* THEN *)
+#111		
+#112					(* $giBackBufferLast := $giBackBufferCurr - 1; *)
+#113					LD		$giBackBufferCurr	{LNXT:28|32|-1}
+(*) UNDEF
+0800C2D4  F8DF 70D4		ldr r7, [pc, #+212] ; 0x2000C816
+0800C2D8  F9B7 0000		ldrsh r0, [r7]
+
+#114					SUB		1	{LNXT:28|32|-1}
+(-) INT
+0800C2DC  1E40     		sub r0, r0, #1
+
+#115					ST		$giBackBufferLast	{LNXT:28|32|-1}
+(*) INT
+0800C2DE  F8DF 70D4		ldr r7, [pc, #+212] ; 0x2000C81A
+0800C2E2  8038     		strh r0, [r7]
+
+#116					JMP		$label9	{LNXT:27|28|30}
+(-) INT
+0800C2E4  E005     		b #10 ; 0x0800C2F2
+
+
+#117		$label8:
+#118		
+#119				(* ELSE *)
+#120		
+#121					(* $giBackBufferLast := -1; *)
+#122					MOVE		-1,$giBackBufferLast	{LNXT:30|32|-1}
+(*) INT
+0800C2E8  F04F 30FF		mov r0, #4294967295 ; 4294967295
+0800C2EC  F8DF 70C4		ldr r7, [pc, #+196] ; 0x2000C81A
+0800C2F0  8038     		strh r0, [r7]
+
+#123		
+#124		$label9:
+#125				(* END_IF *)
+#126		
+#127		
+#128				(* IF $giBackBufferLast <> -1 *)
+#129				LD		$giBackBufferLast	{LNXT:32|-1|-1}
+(*) UNDEF
+0800C2F2  F8DF 70C0		ldr r7, [pc, #+192] ; 0x2000C81A
+0800C2F6  F9B7 0000		ldrsh r0, [r7]
+
+#130				NE		-1	{LNXT:32|-1|-1}
+(*) INT
+0800C2FA  F04F 37FF		mov r7, #4294967295 ; 4294967295
+0800C2FE  42B8     		cmp r0, r7
+0800C300  BF08 2000		eqmov r0, #0
+0800C304  BF18 2001		nemov r0, #1
+
+#131				JMPCN	$label10	{LNXT:32|33|35}
+(-) BOOL
+0800C308  2800     		cmp r0, #0
+0800C30A  D00E     		beq #28 ; 0x0800C32A
+
+
+#132		
+#133				(* THEN *)
+#134		
+#135					(* BackPageId := $guiBackBuffer[$giBackBufferLast]; *)
+#136					MOVE		$guiBackBuffer[$giBackBufferLast],BackPageId	{LNXT:33|-1|-1}
+(*) BOOL
+0800C30E  F8DF 70A4		ldr r7, [pc, #+164] ; 0x2000C81A
+0800C312  F9B7 5000		ldrsh r5, [r7]
+0800C316  F8DF 70A0		ldr r7, [pc, #+160] ; 0x2000C874
+0800C31A  EB07 0745		add r7, r7, r5, lsl #1
+0800C31E  8838     		ldrh r0, [r7]
+0800C320  F8DF 7080		ldr r7, [pc, #+128] ; 0x4
+0800C324  53F0     		strh r0, [r6, +r7]
+
+#137					JMP		$label11	{LNXT:32|33|35}
+(-) UINT
+0800C326  E006     		b #12 ; 0x0800C336
+
+
+#138		$label10:
+#139		
+#140				(* ELSE *)
+#141		
+#142					(* BackPageId := 16#FFFF; *)
+#143					MOVE		16#FFFF,BackPageId	{LNXT:35|-1|-1}
+(*) UINT
+0800C32A  F8DF 707C		ldr r7, [pc, #+124] ; 0xFFFF
+0800C32E  4638     		mov r0, r7
+0800C330  F8DF 7070		ldr r7, [pc, #+112] ; 0x4
+0800C334  53F0     		strh r0, [r6, +r7]
+
+#144		
+#145		$label11:
+#146				(* END_IF *)
+#147				JMP		$label1	{LNXT:3|8|41}
+(-) UINT
+0800C336  E030     		b #96 ; 0x0800C39A
+
+
+#148		$label0:
+#149		
+#150			(* ELSE *)
+#151		
+#152				(* $giBackBufferCurr := $giBackBufferCurr - 1; *)
+#153				LD		$giBackBufferCurr	{LNXT:41|42|-1}
+(*) UNDEF
+0800C33A  F8DF 7070		ldr r7, [pc, #+112] ; 0x2000C816
+0800C33E  F9B7 0000		ldrsh r0, [r7]
+
+#154				SUB		1	{LNXT:41|42|-1}
+(-) INT
+0800C342  1E40     		sub r0, r0, #1
+
+#155				ST		$giBackBufferCurr	{LNXT:41|42|-1}
+(*) INT
+0800C344  F8DF 7064		ldr r7, [pc, #+100] ; 0x2000C816
+0800C348  8038     		strh r0, [r7]
+
+#156		
+#157		
+#158				(* IF $giBackBufferCurr < 0 *)
+#159				LD		$giBackBufferCurr	{LNXT:42|-1|-1}
+(*) UNDEF
+0800C34A  F8DF 7060		ldr r7, [pc, #+96] ; 0x2000C816
+0800C34E  F9B7 0000		ldrsh r0, [r7]
+
+#160				LT		0	{LNXT:42|-1|-1}
+(*) INT
+0800C352  2800     		cmp r0, #0
+0800C354  BFA8 2000		gemov r0, #0
+0800C358  BFB8 2001		ltmov r0, #1
+
+#161				JMPCN	$label12	{LNXT:42|43|45}
+(-) BOOL
+0800C35C  2800     		cmp r0, #0
+0800C35E  D004     		beq #8 ; 0x0800C36A
+
+
+#162		
+#163				(* THEN *)
+#164		
+#165					(* $giBackBufferCurr := 9; *)
+#166					MOVE		9,$giBackBufferCurr	{LNXT:43|45|-1}
+(*) BOOL
+0800C362  2009     		mov r0, #9 ; 9
+0800C364  F8DF 7044		ldr r7, [pc, #+68] ; 0x2000C816
+0800C368  8038     		strh r0, [r7]
+
+#167		
+#168		$label12:
+#169				(* END_IF *)
+#170		
+#171				(* $giBackBufferCurr := $giBackBufferCurr - 1; *)
+#172				LD		$giBackBufferCurr	{LNXT:45|46|-1}
+(*) UNDEF
+0800C36A  F8DF 7040		ldr r7, [pc, #+64] ; 0x2000C816
+0800C36E  F9B7 0000		ldrsh r0, [r7]
+
+#173				SUB		1	{LNXT:45|46|-1}
+(-) INT
+0800C372  1E40     		sub r0, r0, #1
+
+#174				ST		$giBackBufferCurr	{LNXT:45|46|-1}
+(*) INT
+0800C374  F8DF 7034		ldr r7, [pc, #+52] ; 0x2000C816
+0800C378  8038     		strh r0, [r7]
+
+#175		
+#176		
+#177				(* IF $giBackBufferCurr < 0 *)
+#178				LD		$giBackBufferCurr	{LNXT:46|-1|-1}
+(*) UNDEF
+0800C37A  F8DF 7030		ldr r7, [pc, #+48] ; 0x2000C816
+0800C37E  F9B7 0000		ldrsh r0, [r7]
+
+#179				LT		0	{LNXT:46|-1|-1}
+(*) INT
+0800C382  2800     		cmp r0, #0
+0800C384  BFA8 2000		gemov r0, #0
+0800C388  BFB8 2001		ltmov r0, #1
+
+#180				JMPCN	$label13	{LNXT:46|47|-1}
+(-) BOOL
+0800C38C  2800     		cmp r0, #0
+0800C38E  D004     		beq #8 ; 0x0800C39A
+
+
+#181		
+#182				(* THEN *)
+#183		
+#184					(* $giBackBufferCurr := 9; *)
+#185					MOVE		9,$giBackBufferCurr	{LNXT:47|-1|-1}
+(*) BOOL
+0800C392  2009     		mov r0, #9 ; 9
+0800C394  F8DF 7014		ldr r7, [pc, #+20] ; 0x2000C816
+0800C398  8038     		strh r0, [r7]
+
+0800C39A  E8BD 4040		ldmia sp!, { r6, lr }
+
+0800C39E  4770     		bx lr
+
+0800C3A0  00000002		; 0x00000002
+0800C3A4  00000004		; 0x00000004
+0800C3A8  0000FFFF		; 0x0000FFFF
+0800C3AC  2000C816		; 0x2000C816
+0800C3B0  2000C818		; 0x2000C818
+0800C3B4  2000C81A		; 0x2000C81A
+0800C3B8  2000C874		; 0x2000C874
+
+
+Frame allocation:
+
+	0000 bit  0: VAR IsOpening
+	0002       : VAR CurrPageId
+	0004       : VAR BackPageId
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: Refrpage1
+**************************************************
+
+FUNCTION_BLOCK Refrpage1
+
+        VAR_EXTERNAL
+	{G:"Call_stack"}
+guiCallStack : ARRAY[0..9] OF UINT;
+giStackPtr : INT := -1;
+	{G:"page1_vars"}
+fbpage1String_1 : Static02 := (x:=58, y:=75, pFont:=?EWP2_8x16, bckCol:=12632256, pString:=?kStr00001, pVisVar:=1, format:=16#0020, bordPts:=0, selForeCol:=12632256, pRefrVar:=0, pSelVar:=0, numChars:=0);
+fbpage1String_4 : Static02 := (wHnd:=1, x:=54, y:=156, pFont:=?EWP2_8x16, bckCol:=12632256, pString:=?kStr00002, pVisVar:=1, format:=16#0020, bordPts:=0, selForeCol:=12632256, pRefrVar:=0, pSelVar:=0, numChars:=0);
+fbpage1Edit_3 : EditBox03 := (wHnd:=2, x1:=94, y1:=186, x2:=157, y2:=201, pFont:=?EWP2_8x16, bckCol:=32767, bordPts:=1, rw:=TRUE, pVar:=16#00201100, order:=2, pVisVar:=1, foreSelCol:=12632256, refr:=TRUE, type:=tyInt, format:=16#2100000C, pCanSel:=1, pEnumId:=0);
+fbpage1Edit_5 : EditBox03 := (wHnd:=3, x1:=91, y1:=100, x2:=154, y2:=115, pFont:=?EWP2_8x16, bckCol:=65535, bordPts:=1, rw:=TRUE, pVar:=16#00201000, order:=3, pVisVar:=1, foreSelCol:=12632256, refr:=TRUE, type:=tyInt, format:=16#2100000C, pCanSel:=1, pEnumId:=0);
+	{G:"Sets"}
+$waitRefresh : BOOL;
+	END_VAR
+
+        VAR
+res : USINT;
+pagID : UINT;
+n : USINT;
+iSP : INT;
+pDC : UDINT;
+rx1 : UINT;
+ry1 : UINT;
+rx2 : UINT;
+ry2 : UINT;
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+0800C3BC  E92D 4040		stmdb sp!, { r6, lr }
+0800C3C0  462E     		mov r6, r5
+
+#0		{SRC:Refrpage1}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* REPEAT *)
+#4		$label0:
+#5		
+#6				(* res := Video_Lock( res ); *)
+#7				LDP0		res	{LNXT:6|9|-1}
+(-) UNDEF
+#8				Video_Lock	{LNXT:6|9|-1}
+(*) UNDEF
+0800C3C2  7830     		ldrb r0, [r6]
+0800C3C4  F8DF 40A0		ldr r4, [pc, #+160] ; 0x80C8435
+0800C3C8  F044 0401		orr r4, r4, #1
+0800C3CC  47A0     		blx r4
+
+#9				ST		res	{LNXT:6|9|-1}
+(-) USINT
+0800C3CE  7030     		strb r0, [r6]
+
+#10		
+#11				(* pagID := guiCallStack[ giStackPtr ]; *)
+#12				MOVE		guiCallStack[giStackPtr],pagID	{LNXT:9|11|-1}
+(*) USINT
+0800C3D0  F8DF 70A0		ldr r7, [pc, #+160] ; 0x2000C814
+0800C3D4  F9B7 5000		ldrsh r5, [r7]
+0800C3D8  F8DF 709C		ldr r7, [pc, #+156] ; 0x2000C81C
+0800C3DC  EB07 0745		add r7, r7, r5, lsl #1
+0800C3E0  8838     		ldrh r0, [r7]
+0800C3E2  F8DF 7078		ldr r7, [pc, #+120] ; 0x2
+0800C3E6  53F0     		strh r0, [r6, +r7]
+
+#13		
+#14		
+#15				(* IF pagID = 16#00 *)
+#16				LD		pagID	{LNXT:11|-1|-1}
+(*) UNDEF
+0800C3E8  F8DF 7070		ldr r7, [pc, #+112] ; 0x2
+0800C3EC  5BF0     		ldrh r0, [r6, +r7]
+
+#17				EQ		16#00	{LNXT:11|-1|-1}
+(*) UINT
+0800C3EE  2800     		cmp r0, #0
+0800C3F0  BF18 2000		nemov r0, #0
+0800C3F4  BF08 2001		eqmov r0, #1
+
+#18				JMPCN	$label2	{LNXT:11|14|32}
+(-) BOOL
+0800C3F8  2800     		cmp r0, #0
+0800C3FA  D012     		beq #36 ; 0x0800C422
+
+
+#19		
+#20				(* THEN *)
+#21		
+#22					(* $waitRefresh := FALSE; *)
+#23					MOVE		FALSE,$waitRefresh	{LNXT:14|19|-1}
+(*) BOOL
+0800C3FE  2000     		mov r0, #0 ; 0
+0800C400  F8DF 7078		ldr r7, [pc, #+120] ; 0x2000C888
+0800C404  7038     		strb r0, [r7]
+
+#24		
+#25					(* res := Video_UpdatePageControls( TRUE ); *)
+#26					LDP0		TRUE	{LNXT:19|24|-1}
+(-) BOOL
+#27					Video_UpdatePageControls	{LNXT:19|24|-1}
+(*) BOOL
+0800C406  2001     		mov r0, #1 ; 1
+0800C408  F8DF 4058		ldr r4, [pc, #+88] ; 0x80C0921
+0800C40C  F044 0401		orr r4, r4, #1
+0800C410  47A0     		blx r4
+
+#28					ST		res	{LNXT:19|24|-1}
+(-) BOOL
+0800C412  7030     		strb r0, [r6]
+
+#29		
+#30					(* iSP := giStackPtr; *)
+#31					MOVE		giStackPtr,iSP	{LNXT:24|32|-1}
+(*) USINT
+0800C414  F8DF 705C		ldr r7, [pc, #+92] ; 0x2000C814
+0800C418  F9B7 0000		ldrsh r0, [r7]
+0800C41C  F8DF 7040		ldr r7, [pc, #+64] ; 0x6
+0800C420  53F0     		strh r0, [r6, +r7]
+
+#32		
+#33		$label2:
+#34				(* END_IF *)
+#35		
+#36				(* res := Video_Unlock( res ); *)
+#37				LDP0		res	{LNXT:32|35|-1}
+(-) INT
+#38				Video_Unlock	{LNXT:32|35|-1}
+(*) INT
+0800C422  7830     		ldrb r0, [r6]
+0800C424  F8DF 4044		ldr r4, [pc, #+68] ; 0x80C8445
+0800C428  F044 0401		orr r4, r4, #1
+0800C42C  47A0     		blx r4
+
+#39				ST		res	{LNXT:32|35|-1}
+(-) USINT
+0800C42E  7030     		strb r0, [r6]
+
+#40		
+#41				(* res := Video_Sleep( 50 ); *)
+#42				LDP0		50	{LNXT:35|37|-1}
+(-) USINT
+#43				Video_Sleep	{LNXT:35|37|-1}
+(*) USINT
+0800C430  2732     		mov r7, #50 ; 50
+0800C432  4638     		mov r0, r7
+0800C434  F8DF 4038		ldr r4, [pc, #+56] ; 0x80C8459
+0800C438  F044 0401		orr r4, r4, #1
+0800C43C  47A0     		blx r4
+
+#44				ST		res	{LNXT:35|37|-1}
+(-) USINT
+0800C43E  7030     		strb r0, [r6]
+
+#45		
+#46			(* UNTIL pagID <> 16#00 *)
+#47		
+#48			(*  *)
+#49			LD		pagID	{LNXT:37|-1|-1}
+(*) UNDEF
+0800C440  F8DF 7018		ldr r7, [pc, #+24] ; 0x2
+0800C444  5BF0     		ldrh r0, [r6, +r7]
+
+#50			NE		16#00	{LNXT:37|-1|-1}
+(*) UINT
+0800C446  2800     		cmp r0, #0
+0800C448  BF08 2000		eqmov r0, #0
+0800C44C  BF18 2001		nemov r0, #1
+
+#51				JMPCN	$label0	{LNXT:37|6|-1}
+(-) BOOL
+0800C450  2800     		cmp r0, #0
+0800C452  D0B6     		beq #-148 ; 0x0800C3C2
+
+0800C454  E8BD 4040		ldmia sp!, { r6, lr }
+
+0800C458  4770     		bx lr
+
+0800C45C  00000002		; 0x00000002
+0800C460  00000006		; 0x00000006
+0800C464  080C0921		; 0x080C0921
+0800C468  080C8435		; 0x080C8435
+0800C46C  080C8445		; 0x080C8445
+0800C470  080C8459		; 0x080C8459
+0800C474  2000C814		; 0x2000C814
+0800C478  2000C81C		; 0x2000C81C
+0800C47C  2000C888		; 0x2000C888
+
+
+Frame allocation:
+
+	0000       : VAR res
+	0002       : VAR pagID
+	0004       : VAR n
+	0006       : VAR iSP
+	0008       : VAR pDC
+	000C       : VAR rx1
+	000E       : VAR ry1
+	0010       : VAR rx2
+	0012       : VAR ry2
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: Drawpage1
+**************************************************
+
+FUNCTION_BLOCK Drawpage1
+
+        VAR_OUTPUT
+uiOutVar : UINT;
+	END_VAR
+
+        VAR_EXTERNAL
+	{G:"Call_stack"}
+guiCallStack : ARRAY[0..9] OF UINT;
+giStackPtr : INT := -1;
+	{G:"Back_page_manager"}
+fbBackPage : DrawBackPage;
+	{G:"page1_vars"}
+fbpage1String_1 : Static02 := (x:=58, y:=75, pFont:=?EWP2_8x16, bckCol:=12632256, pString:=?kStr00001, pVisVar:=1, format:=16#0020, bordPts:=0, selForeCol:=12632256, pRefrVar:=0, pSelVar:=0, numChars:=0);
+fbpage1String_4 : Static02 := (wHnd:=1, x:=54, y:=156, pFont:=?EWP2_8x16, bckCol:=12632256, pString:=?kStr00002, pVisVar:=1, format:=16#0020, bordPts:=0, selForeCol:=12632256, pRefrVar:=0, pSelVar:=0, numChars:=0);
+fbpage1Edit_3 : EditBox03 := (wHnd:=2, x1:=94, y1:=186, x2:=157, y2:=201, pFont:=?EWP2_8x16, bckCol:=32767, bordPts:=1, rw:=TRUE, pVar:=16#00201100, order:=2, pVisVar:=1, foreSelCol:=12632256, refr:=TRUE, type:=tyInt, format:=16#2100000C, pCanSel:=1, pEnumId:=0);
+fbpage1Edit_5 : EditBox03 := (wHnd:=3, x1:=91, y1:=100, x2:=154, y2:=115, pFont:=?EWP2_8x16, bckCol:=65535, bordPts:=1, rw:=TRUE, pVar:=16#00201000, order:=3, pVisVar:=1, foreSelCol:=12632256, refr:=TRUE, type:=tyInt, format:=16#2100000C, pCanSel:=1, pEnumId:=0);
+	{G:"Sets"}
+$waitRefresh : BOOL;
+	END_VAR
+
+        VAR
+res : USINT;
+bStatRedrw : BOOL;
+bMapsReset : BOOL;
+iNextSel : INT;
+$Set_IndexVisEl : UINT;
+$Set_CycleRefresh : UINT;
+$Set_PtrBoolVis : @BOOL;
+$Set_VisEl : BOOL;
+$Set_IndexPageInSet : UINT;
+$Set_ForcePageReload : BOOL;
+$Set_NextPage : BOOL;
+$Set_PrevPage : BOOL;
+$Set_LocalSetPagNumber : UINT;
+$Set_NumVisEl : UINT;
+$Set_LastFirstEl : INT;
+udiev : UDINT;
+ev : UINT;
+key : USINT;
+x1 : UINT;
+y1 : UINT;
+x2 : UINT;
+y2 : UINT;
+wParam : UINT;
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+0800C480  E92D 4040		stmdb sp!, { r6, lr }
+0800C484  462E     		mov r6, r5
+
+#0		{SRC:Drawpage1}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* guiCallStack[ giStackPtr ] := 16#00; *)
+#4			MOVE		16#00,guiCallStack[giStackPtr]	{LNXT:4|7|-1}
+(*) UNDEF
+0800C486  2000     		mov r0, #0 ; 0
+0800C488  F8DF 748C		ldr r7, [pc, #+1164] ; 0x2000C814
+0800C48C  F9B7 5000		ldrsh r5, [r7]
+0800C490  F8DF 7488		ldr r7, [pc, #+1160] ; 0x2000C81C
+0800C494  EB07 0745		add r7, r7, r5, lsl #1
+0800C498  8038     		strh r0, [r7]
+
+#5		
+#6			(* fbBackPage.IsOpening := TRUE; *)
+#7			MOVE		TRUE,fbBackPage.IsOpening	{LNXT:7|8|-1}
+(*) UINT
+0800C49A  2001     		mov r0, #1 ; 1
+0800C49C  F8DF 7480		ldr r7, [pc, #+1152] ; 0x2000C86C
+0800C4A0  7038     		strb r0, [r7]
+
+#8		
+#9			(* fbBackPage.CurrPageId := 16#00; *)
+#10			MOVE		16#00,fbBackPage.CurrPageId	{LNXT:8|9|-1}
+(*) BOOL
+0800C4A2  2000     		mov r0, #0 ; 0
+0800C4A4  F8DF 747C		ldr r7, [pc, #+1148] ; 0x2000C86E
+0800C4A8  8038     		strh r0, [r7]
+
+#11		
+#12			(* fbBackPage *)
+#13			CAL		fbBackPage	{LNXT:9|13|-1}
+(*) UINT
+0800C4AA  E92D 0021		stmdb sp!, { r0, r5 }
+0800C4AE  F8DF 7470		ldr r7, [pc, #+1136] ; 0x2000C86C
+0800C4B2  463D     		mov r5, r7
+0800C4B4  F8DF 4424		ldr r4, [pc, #+1060] ; 0x800C148
+0800C4B8  F044 0401		orr r4, r4, #1
+0800C4BC  47A0     		blx r4
+0800C4BE  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#14		
+#15			(* $waitRefresh := TRUE; *)
+#16			MOVE		TRUE,$waitRefresh	{LNXT:13|16|-1}
+(*) UINT
+0800C4C2  2001     		mov r0, #1 ; 1
+0800C4C4  F8DF 7460		ldr r7, [pc, #+1120] ; 0x2000C888
+0800C4C8  7038     		strb r0, [r7]
+
+#17		
+#18			(* res := Video_ResetMaps( 16#00 ); *)
+#19			LDP0		16#00	{LNXT:16|19|-1}
+(-) BOOL
+#20			Video_ResetMaps	{LNXT:16|19|-1}
+(*) BOOL
+0800C4CA  2000     		mov r0, #0 ; 0
+0800C4CC  F8DF 443C		ldr r4, [pc, #+1084] ; 0x80C8467
+0800C4D0  F044 0401		orr r4, r4, #1
+0800C4D4  47A0     		blx r4
+
+#21			ST		res	{LNXT:16|19|-1}
+(-) USINT
+0800C4D6  7030     		strb r0, [r6]
+
+#22		
+#23			(* bStatRedrw := TRUE; *)
+#24			MOVE		TRUE,bStatRedrw	{LNXT:19|20|-1}
+(*) USINT
+0800C4D8  2001     		mov r0, #1 ; 1
+0800C4DA  F8DF 73C4		ldr r7, [pc, #+964] ; 0x1
+0800C4DE  55F0     		strb r0, [r6, +r7]
+
+#25		
+#26			(* bMapsReset := TRUE; *)
+#27			MOVE		TRUE,bMapsReset	{LNXT:20|23|-1}
+(*) BOOL
+0800C4E0  2001     		mov r0, #1 ; 1
+0800C4E2  F8DF 73C0		ldr r7, [pc, #+960] ; 0x2
+0800C4E6  55F0     		strb r0, [r6, +r7]
+
+#28		
+#29			(* x1:= 0; *)
+#30			MOVE		0,x1	{LNXT:23|24|-1}
+(*) BOOL
+0800C4E8  2000     		mov r0, #0 ; 0
+0800C4EA  F8DF 73CC		ldr r7, [pc, #+972] ; 0x28
+0800C4EE  53F0     		strh r0, [r6, +r7]
+
+#31		
+#32			(* y1:= 0; *)
+#33			MOVE		0,y1	{LNXT:24|25|-1}
+(*) UINT
+0800C4F0  2000     		mov r0, #0 ; 0
+0800C4F2  F8DF 73C8		ldr r7, [pc, #+968] ; 0x2A
+0800C4F6  53F0     		strh r0, [r6, +r7]
+
+#34		
+#35			(* x2:= 239; *)
+#36			MOVE		239,x2	{LNXT:25|26|-1}
+(*) UINT
+0800C4F8  20EF     		mov r0, #239 ; 239
+0800C4FA  F8DF 73C4		ldr r7, [pc, #+964] ; 0x2C
+0800C4FE  53F0     		strh r0, [r6, +r7]
+
+#37		
+#38			(* y2:= 319; *)
+#39			MOVE		319,y2	{LNXT:26|29|-1}
+(*) UINT
+0800C500  F8DF 73CC		ldr r7, [pc, #+972] ; 0x13F
+0800C504  4638     		mov r0, r7
+0800C506  F8DF 73BC		ldr r7, [pc, #+956] ; 0x2E
+0800C50A  53F0     		strh r0, [r6, +r7]
+
+#40		
+#41			(* res := Video_Unlock( res ); *)
+#42			LDP0		res	{LNXT:29|31|-1}
+(-) UINT
+#43			Video_Unlock	{LNXT:29|31|-1}
+(*) UINT
+0800C50C  7830     		ldrb r0, [r6]
+0800C50E  F8DF 43F4		ldr r4, [pc, #+1012] ; 0x80C8445
+0800C512  F044 0401		orr r4, r4, #1
+0800C516  47A0     		blx r4
+
+#44			ST		res	{LNXT:29|31|-1}
+(-) USINT
+0800C518  7030     		strb r0, [r6]
+
+#45		
+#46			(* WHILE TRUE *)
+#47		$label0:
+#48			LD		TRUE	{LNXT:31|-1|-1}
+(-) UNDEF
+0800C51A  2001     		mov r0, #1 ; 1
+
+#49			JMPCN		$label1	{LNXT:31|34|-1}
+(-) BOOL
+0800C51C  2800     		cmp r0, #0
+0800C51E  F000 81BB		beq #886 ; 0x0800C898
+
+
+#50		
+#51			(* DO *)
+#52				(* res := Video_Lock( res ); *)
+#53				LDP0		res	{LNXT:34|37|-1}
+(-) BOOL
+#54				Video_Lock	{LNXT:34|37|-1}
+(*) BOOL
+0800C522  7830     		ldrb r0, [r6]
+0800C524  F8DF 43D8		ldr r4, [pc, #+984] ; 0x80C8435
+0800C528  F044 0401		orr r4, r4, #1
+0800C52C  47A0     		blx r4
+
+#55				ST		res	{LNXT:34|37|-1}
+(-) USINT
+0800C52E  7030     		strb r0, [r6]
+
+#56		
+#57				(* res := Video_InitPage( 0, 0, 239, 319, ?' ', 16#0003 ); *)
+#58				ADR		' '	{LNXT:37|40|-1}
+(*) USINT
+0800C530  F8DF 03A4		ldr r0, [pc, #+932] ; 0x800C120
+
+#59				ST		$$TMP0	{LNXT:37|40|-1}
+(*) @STRING
+0800C534  F8DF 7390		ldr r7, [pc, #+912] ; 0x34
+0800C538  51F0     		str r0, [r6, +r7]
+
+#60				LDP0		0	{LNXT:37|40|-1}
+(-) @STRING
+#61				Video_InitPage		0, 239, 319, $$TMP0, 16#0003	{LNXT:37|40|-1}
+(*) @STRING
+0800C53A  B082     		sub sp, sp, #8
+0800C53C  2700     		mov r7, #0 ; 0
+0800C53E  4638     		mov r0, r7
+0800C540  2700     		mov r7, #0 ; 0
+0800C542  4639     		mov r1, r7
+0800C544  27EF     		mov r7, #239 ; 239
+0800C546  463A     		mov r2, r7
+0800C548  F8DF 7384		ldr r7, [pc, #+900] ; 0x13F
+0800C54C  463B     		mov r3, r7
+0800C54E  F8DF 7378		ldr r7, [pc, #+888] ; 0x34
+0800C552  59F7     		ldr r7, [r6, +r7]
+0800C554  F8CD 7000		str r7, [sp]
+0800C558  2703     		mov r7, #3 ; 3
+0800C55A  F8CD 7004		str r7, [sp, #+4]
+0800C55E  F8DF 4380		ldr r4, [pc, #+896] ; 0x80C5D39
+0800C562  F044 0401		orr r4, r4, #1
+0800C566  47A0     		blx r4
+0800C568  B002     		add sp, sp, #8
+
+#62				ST		res	{LNXT:37|40|-1}
+(-) USINT
+0800C56A  7030     		strb r0, [r6]
+
+#63		
+#64				(* res := Video_SetPageColors( 0, 12632256 ); *)
+#65				LDP0		0	{LNXT:40|42|-1}
+(-) USINT
+#66				Video_SetPageColors		12632256	{LNXT:40|42|-1}
+(*) USINT
+0800C56C  2700     		mov r7, #0 ; 0
+0800C56E  4638     		mov r0, r7
+0800C570  F8DF 7360		ldr r7, [pc, #+864] ; 0xC0C0C0
+0800C574  4639     		mov r1, r7
+0800C576  F8DF 4370		ldr r4, [pc, #+880] ; 0x80C6679
+0800C57A  F044 0401		orr r4, r4, #1
+0800C57E  47A0     		blx r4
+
+#67				ST		res	{LNXT:40|42|-1}
+(-) USINT
+0800C580  7030     		strb r0, [r6]
+
+#68		
+#69		
+#70				(* IF bStatRedrw *)
+#71				LD		bStatRedrw	{LNXT:42|-1|-1}
+(*) UNDEF
+0800C582  F8DF 731C		ldr r7, [pc, #+796] ; 0x1
+0800C586  5DF0     		ldrb r0, [r6, +r7]
+
+#72				JMPCN	$label2	{LNXT:42|45|49}
+(-) BOOL
+0800C588  2800     		cmp r0, #0
+0800C58A  D012     		beq #36 ; 0x0800C5B2
+
+
+#73		
+#74				(* THEN *)
+#75		
+#76					(* res := Video_ClrRect( x1, y1, x2, y2 ); *)
+#77					LDP0		x1	{LNXT:45|49|-1}
+(-) BOOL
+#78					Video_ClrRect		y1, x2, y2	{LNXT:45|49|-1}
+(*) BOOL
+0800C58E  F8DF 7328		ldr r7, [pc, #+808] ; 0x28
+0800C592  5BF0     		ldrh r0, [r6, +r7]
+0800C594  F8DF 7324		ldr r7, [pc, #+804] ; 0x2A
+0800C598  5BF1     		ldrh r1, [r6, +r7]
+0800C59A  F8DF 7324		ldr r7, [pc, #+804] ; 0x2C
+0800C59E  5BF2     		ldrh r2, [r6, +r7]
+0800C5A0  F8DF 7320		ldr r7, [pc, #+800] ; 0x2E
+0800C5A4  5BF3     		ldrh r3, [r6, +r7]
+0800C5A6  F8DF 433C		ldr r4, [pc, #+828] ; 0x80C65DB
+0800C5AA  F044 0401		orr r4, r4, #1
+0800C5AE  47A0     		blx r4
+
+#79					ST		res	{LNXT:45|49|-1}
+(-) USINT
+0800C5B0  7030     		strb r0, [r6]
+
+#80		
+#81		$label2:
+#82				(* END_IF *)
+#83		
+#84		
+#85				(* IF bMapsReset *)
+#86				LD		bMapsReset	{LNXT:49|-1|-1}
+(*) UNDEF
+0800C5B2  F8DF 72F0		ldr r7, [pc, #+752] ; 0x2
+0800C5B6  5DF0     		ldrb r0, [r6, +r7]
+
+#87				JMPCN	$label3	{LNXT:49|52|75}
+(-) BOOL
+0800C5B8  2800     		cmp r0, #0
+0800C5BA  D057     		beq #174 ; 0x0800C66C
+
+
+#88		
+#89				(* THEN *)
+#90		
+#91					(* res := Video_ResetMaps( 16#FF ); *)
+#92					LDP0		16#FF	{LNXT:52|59|-1}
+(-) BOOL
+#93					Video_ResetMaps	{LNXT:52|59|-1}
+(*) BOOL
+0800C5BE  20FF     		mov r0, #255 ; 255
+0800C5C0  F8DF 4348		ldr r4, [pc, #+840] ; 0x80C8467
+0800C5C4  F044 0401		orr r4, r4, #1
+0800C5C8  47A0     		blx r4
+
+#94					ST		res	{LNXT:52|59|-1}
+(-) USINT
+0800C5CA  7030     		strb r0, [r6]
+
+#95		
+#96					(* fbpage1String_1.accMode := kACS_INIT; *)
+#97					MOVE		kACS_INIT,fbpage1String_1.accMode	{LNXT:59|60|-1}
+(*) USINT
+0800C5CC  2001     		mov r0, #1 ; 1
+0800C5CE  F8DF 7360		ldr r7, [pc, #+864] ; 0x2000C89A
+0800C5D2  7038     		strb r0, [r7]
+
+#98		
+#99					(* fbpage1String_1 *)
+#100					CAL		fbpage1String_1	{LNXT:60|61|-1}
+(*) USINT
+0800C5D4  E92D 0021		stmdb sp!, { r0, r5 }
+0800C5D8  F8DF 7350		ldr r7, [pc, #+848] ; 0x2000C88C
+0800C5DC  4638     		mov r0, r7
+0800C5DE  F8DF 4334		ldr r4, [pc, #+820] ; 0x80CCE77
+0800C5E2  F044 0401		orr r4, r4, #1
+0800C5E6  47A0     		blx r4
+0800C5E8  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#101		
+#102					(* fbpage1String_1.accMode := kACS_PRINT; *)
+#103					MOVE		kACS_PRINT,fbpage1String_1.accMode	{LNXT:61|62|-1}
+(*) USINT
+0800C5EC  2002     		mov r0, #2 ; 2
+0800C5EE  F8DF 7340		ldr r7, [pc, #+832] ; 0x2000C89A
+0800C5F2  7038     		strb r0, [r7]
+
+#104		
+#105					(* fbpage1Edit_3.accMode := kACS_INIT; *)
+#106					MOVE		kACS_INIT,fbpage1Edit_3.accMode	{LNXT:62|63|-1}
+(*) USINT
+0800C5F4  2001     		mov r0, #1 ; 1
+0800C5F6  F8DF 7340		ldr r7, [pc, #+832] ; 0x2000C929
+0800C5FA  7038     		strb r0, [r7]
+
+#107		
+#108					(* fbpage1Edit_3 *)
+#109					CAL		fbpage1Edit_3	{LNXT:63|64|-1}
+(*) USINT
+0800C5FC  E92D 0021		stmdb sp!, { r0, r5 }
+0800C600  F8DF 7330		ldr r7, [pc, #+816] ; 0x2000C8CC
+0800C604  4638     		mov r0, r7
+0800C606  F8DF 4308		ldr r4, [pc, #+776] ; 0x80CA4FD
+0800C60A  F044 0401		orr r4, r4, #1
+0800C60E  47A0     		blx r4
+0800C610  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#110		
+#111					(* fbpage1Edit_3.accMode := kACS_PRINT; *)
+#112					MOVE		kACS_PRINT,fbpage1Edit_3.accMode	{LNXT:64|65|-1}
+(*) USINT
+0800C614  2002     		mov r0, #2 ; 2
+0800C616  F8DF 7320		ldr r7, [pc, #+800] ; 0x2000C929
+0800C61A  7038     		strb r0, [r7]
+
+#113		
+#114					(* fbpage1String_4.accMode := kACS_INIT; *)
+#115					MOVE		kACS_INIT,fbpage1String_4.accMode	{LNXT:65|66|-1}
+(*) USINT
+0800C61C  2001     		mov r0, #1 ; 1
+0800C61E  F8DF 7320		ldr r7, [pc, #+800] ; 0x2000C946
+0800C622  7038     		strb r0, [r7]
+
+#116		
+#117					(* fbpage1String_4 *)
+#118					CAL		fbpage1String_4	{LNXT:66|67|-1}
+(*) USINT
+0800C624  E92D 0021		stmdb sp!, { r0, r5 }
+0800C628  F8DF 7310		ldr r7, [pc, #+784] ; 0x2000C938
+0800C62C  4638     		mov r0, r7
+0800C62E  F8DF 42E4		ldr r4, [pc, #+740] ; 0x80CCE77
+0800C632  F044 0401		orr r4, r4, #1
+0800C636  47A0     		blx r4
+0800C638  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#119		
+#120					(* fbpage1String_4.accMode := kACS_PRINT; *)
+#121					MOVE		kACS_PRINT,fbpage1String_4.accMode	{LNXT:67|68|-1}
+(*) USINT
+0800C63C  2002     		mov r0, #2 ; 2
+0800C63E  F8DF 7300		ldr r7, [pc, #+768] ; 0x2000C946
+0800C642  7038     		strb r0, [r7]
+
+#122		
+#123					(* fbpage1Edit_5.accMode := kACS_INIT; *)
+#124					MOVE		kACS_INIT,fbpage1Edit_5.accMode	{LNXT:68|69|-1}
+(*) USINT
+0800C644  2001     		mov r0, #1 ; 1
+0800C646  F8DF 7300		ldr r7, [pc, #+768] ; 0x2000C9D5
+0800C64A  7038     		strb r0, [r7]
+
+#125		
+#126					(* fbpage1Edit_5 *)
+#127					CAL		fbpage1Edit_5	{LNXT:69|70|-1}
+(*) USINT
+0800C64C  E92D 0021		stmdb sp!, { r0, r5 }
+0800C650  F8DF 72F0		ldr r7, [pc, #+752] ; 0x2000C978
+0800C654  4638     		mov r0, r7
+0800C656  F8DF 42B8		ldr r4, [pc, #+696] ; 0x80CA4FD
+0800C65A  F044 0401		orr r4, r4, #1
+0800C65E  47A0     		blx r4
+0800C660  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#128		
+#129					(* fbpage1Edit_5.accMode := kACS_PRINT; *)
+#130					MOVE		kACS_PRINT,fbpage1Edit_5.accMode	{LNXT:70|75|-1}
+(*) USINT
+0800C664  2002     		mov r0, #2 ; 2
+0800C666  F8DF 72E0		ldr r7, [pc, #+736] ; 0x2000C9D5
+0800C66A  7038     		strb r0, [r7]
+
+#131		
+#132		$label3:
+#133				(* END_IF *)
+#134		
+#135				(* res := Video_Unlock( res ); *)
+#136				LDP0		res	{LNXT:75|78|-1}
+(-) USINT
+#137				Video_Unlock	{LNXT:75|78|-1}
+(*) USINT
+0800C66C  7830     		ldrb r0, [r6]
+0800C66E  F8DF 4294		ldr r4, [pc, #+660] ; 0x80C8445
+0800C672  F044 0401		orr r4, r4, #1
+0800C676  47A0     		blx r4
+
+#138				ST		res	{LNXT:75|78|-1}
+(-) USINT
+0800C678  7030     		strb r0, [r6]
+
+#139		
+#140				(* bStatRedrw := FALSE; *)
+#141				MOVE		FALSE,bStatRedrw	{LNXT:78|79|-1}
+(*) USINT
+0800C67A  2000     		mov r0, #0 ; 0
+0800C67C  F8DF 7220		ldr r7, [pc, #+544] ; 0x1
+0800C680  55F0     		strb r0, [r6, +r7]
+
+#142		
+#143				(* bMapsReset := FALSE; *)
+#144				MOVE		FALSE,bMapsReset	{LNXT:79|82|-1}
+(*) BOOL
+0800C682  2000     		mov r0, #0 ; 0
+0800C684  F8DF 721C		ldr r7, [pc, #+540] ; 0x2
+0800C688  55F0     		strb r0, [r6, +r7]
+
+#145		
+#146				(* WHILE bStatRedrw *)
+#147		$label4:
+#148				LD		bStatRedrw	{LNXT:82|-1|-1}
+(*) UNDEF
+0800C68A  F8DF 7214		ldr r7, [pc, #+532] ; 0x1
+0800C68E  5DF0     		ldrb r0, [r6, +r7]
+
+#149				NOT	{LNXT:82|-1|-1}
+(*) BOOL
+0800C690  2800     		cmp r0, #0
+0800C692  BF08 2001		eqmov r0, #1
+0800C696  BF18 2000		nemov r0, #0
+
+#150				JMPCN		$label5	{LNXT:82|85|31}
+(-) BOOL
+0800C69A  2800     		cmp r0, #0
+0800C69C  F000 80FB		beq #502 ; 0x0800C896
+
+
+#151		
+#152				(* DO *)
+#153		
+#154					(* IF $waitRefresh *)
+#155					LD		$waitRefresh	{LNXT:85|-1|-1}
+(*) UNDEF
+0800C6A0  F8DF 7284		ldr r7, [pc, #+644] ; 0x2000C888
+0800C6A4  7838     		ldrb r0, [r7]
+
+#156					JMPCN	$label6	{LNXT:85|86|90}
+(-) BOOL
+0800C6A6  2800     		cmp r0, #0
+0800C6A8  D00A     		beq #20 ; 0x0800C6C0
+
+
+#157		
+#158					(* THEN *)
+#159		
+#160						(* res := Video_Sleep( 50 ); *)
+#161						LDP0		50	{LNXT:86|82|-1}
+(-) BOOL
+#162						Video_Sleep	{LNXT:86|82|-1}
+(*) BOOL
+0800C6AC  2732     		mov r7, #50 ; 50
+0800C6AE  4638     		mov r0, r7
+0800C6B0  F8DF 4254		ldr r4, [pc, #+596] ; 0x80C8459
+0800C6B4  F044 0401		orr r4, r4, #1
+0800C6B8  47A0     		blx r4
+
+#163						ST		res	{LNXT:86|82|-1}
+(-) USINT
+0800C6BA  7030     		strb r0, [r6]
+
+#164						JMP		$label7	{LNXT:85|86|90}
+(-) USINT
+0800C6BC  E0EA     		b #468 ; 0x0800C894
+
+
+#165		$label6:
+#166		
+#167					(* ELSE *)
+#168		
+#169						(* udiev := Video_GetEvent( res ); *)
+#170						LDP0		res	{LNXT:90|92|-1}
+(-) USINT
+#171						Video_GetEvent	{LNXT:90|92|-1}
+(*) USINT
+0800C6C0  7830     		ldrb r0, [r6]
+0800C6C2  F8DF 422C		ldr r4, [pc, #+556] ; 0x80C7531
+0800C6C6  F044 0401		orr r4, r4, #1
+0800C6CA  47A0     		blx r4
+
+#172						ST		udiev	{LNXT:90|92|-1}
+(*) UDINT
+0800C6CC  F8DF 71DC		ldr r7, [pc, #+476] ; 0x20
+0800C6D0  51F0     		str r0, [r6, +r7]
+
+#173		
+#174						(* ev := TO_UINT(udiev); *)
+#175						LDP0		udiev	{LNXT:92|95|-1}
+(-) UDINT
+#176						TO_UINT	{LNXT:92|95|-1}
+(*) UDINT
+0800C6D2  F8DF 71D8		ldr r7, [pc, #+472] ; 0x20
+0800C6D6  59F0     		ldr r0, [r6, +r7]
+
+#177						ST		ev	{LNXT:92|95|-1}
+(*) UINT
+0800C6D8  F8DF 71D4		ldr r7, [pc, #+468] ; 0x24
+0800C6DC  53F0     		strh r0, [r6, +r7]
+
+#178		
+#179		
+#180						(* CASE ev OF *)
+#181		
+#182						(* kWM_KEY: *)
+#183						LD		ev	{LNXT:97|-1|-1}
+(*) UNDEF
+0800C6DE  F8DF 71D0		ldr r7, [pc, #+464] ; 0x24
+0800C6E2  5BF0     		ldrh r0, [r6, +r7]
+
+#184						EQ		kWM_KEY	{LNXT:97|-1|-1}
+(*) UINT
+0800C6E4  2701     		mov r7, #1 ; 1
+0800C6E6  42B8     		cmp r0, r7
+0800C6E8  BF18 2000		nemov r0, #0
+0800C6EC  BF08 2001		eqmov r0, #1
+
+#185						JMPC		$label9	{LNXT:97|99|102}
+(-) BOOL
+0800C6F0  2800     		cmp r0, #0
+0800C6F2  D10E     		bne #28 ; 0x0800C712
+
+
+#186		
+#187						(* kWM_SELECT: *)
+#188						LD		ev	{LNXT:102|-1|-1}
+(*) UNDEF
+0800C6F6  F8DF 71B8		ldr r7, [pc, #+440] ; 0x24
+0800C6FA  5BF0     		ldrh r0, [r6, +r7]
+
+#189						EQ		kWM_SELECT	{LNXT:102|-1|-1}
+(*) UINT
+0800C6FC  2703     		mov r7, #3 ; 3
+0800C6FE  42B8     		cmp r0, r7
+0800C700  BF18 2000		nemov r0, #0
+0800C704  BF08 2001		eqmov r0, #1
+
+#190						JMPC		$label10	{LNXT:102|105|82}
+(-) BOOL
+0800C708  2800     		cmp r0, #0
+0800C70A  D10B     		bne #22 ; 0x0800C724
+
+
+#191						JMP		$label8	{LNXT:102|105|82}
+(-) BOOL
+0800C70E  E0C1     		b #386 ; 0x0800C894
+
+
+#192		
+#193						(* Istruzioni di ciascun CASE: *)
+#194		
+#195		$label9:
+#196							(* key := TO_USINT(SHR(udiev, 16)); *)
+#197							LDP0		udiev	{LNXT:99|82|-1}
+(-) BOOL
+#198							SHR		16	{LNXT:99|82|-1}
+(*) BOOL
+0800C712  F8DF 7198		ldr r7, [pc, #+408] ; 0x20
+0800C716  59F0     		ldr r0, [r6, +r7]
+0800C718  0C00     		lsr r0, r0, #16
+
+#199							TO_USINT	{LNXT:99|82|-1}
+(-) UDINT
+#200							ST		key	{LNXT:99|82|-1}
+(*) USINT
+0800C71A  F8DF 7198		ldr r7, [pc, #+408] ; 0x26
+0800C71E  55F0     		strb r0, [r6, +r7]
+
+#201							JMP		$label8	{LNXT:99|82|-1}
+(-) USINT
+0800C720  E0B8     		b #368 ; 0x0800C894
+
+
+#202		
+#203		$label10:
+#204							(* iNextSel := TO_INT(SHR(udiev, 16)); *)
+#205							LDP0		udiev	{LNXT:105|108|-1}
+(-) USINT
+#206							SHR		16	{LNXT:105|108|-1}
+(*) USINT
+0800C724  F8DF 7184		ldr r7, [pc, #+388] ; 0x20
+0800C728  59F0     		ldr r0, [r6, +r7]
+0800C72A  0C00     		lsr r0, r0, #16
+
+#207							TO_INT	{LNXT:105|108|-1}
+(-) UDINT
+0800C72C  B200     		sxth r0, r0
+
+#208							ST		iNextSel	{LNXT:105|108|-1}
+(*) INT
+0800C72E  F8DF 7178		ldr r7, [pc, #+376] ; 0x4
+0800C732  53F0     		strh r0, [r6, +r7]
+
+#209		
+#210		
+#211							(* CASE iNextSel OF *)
+#212		
+#213							(* 2: *)
+#214							LD		iNextSel	{LNXT:109|-1|-1}
+(*) UNDEF
+0800C734  F8DF 7170		ldr r7, [pc, #+368] ; 0x4
+0800C738  5FF0     		ldrsh r0, [r6, +r7]
+
+#215							EQ		2	{LNXT:109|-1|-1}
+(*) INT
+0800C73A  2802     		cmp r0, #2
+0800C73C  BF18 2000		nemov r0, #0
+0800C740  BF08 2001		eqmov r0, #1
+
+#216							JMPC		$label12	{LNXT:109|113|82}
+(-) BOOL
+0800C744  2800     		cmp r0, #0
+0800C746  D10D     		bne #26 ; 0x0800C764
+
+
+#217		
+#218							(* 3: *)
+#219							LD		iNextSel	{LNXT:109|-1|-1}
+(*) UNDEF
+0800C74A  F8DF 715C		ldr r7, [pc, #+348] ; 0x4
+0800C74E  5FF0     		ldrsh r0, [r6, +r7]
+
+#220							EQ		3	{LNXT:109|-1|-1}
+(*) INT
+0800C750  2803     		cmp r0, #3
+0800C752  BF18 2000		nemov r0, #0
+0800C756  BF08 2001		eqmov r0, #1
+
+#221							JMPC		$label12	{LNXT:109|113|82}
+(-) BOOL
+0800C75A  2800     		cmp r0, #0
+0800C75C  D102     		bne #4 ; 0x0800C764
+
+
+#222							JMP		$label11	{LNXT:109|113|82}
+(-) BOOL
+0800C760  E098     		b #304 ; 0x0800C894
+
+
+#223		
+#224							(* Istruzioni di ciascun CASE: *)
+#225		
+#226		$label12:
+#227								(* REPEAT *)
+#228		$label13:
+#229		
+#230									(* res := Video_EnterEdit( TO_UINT( iNextSel ) ); *)
+#231									LDP0		iNextSel	{LNXT:113|115|-1}
+(-) BOOL
+#232									TO_UINT	{LNXT:113|115|-1}
+(*) BOOL
+0800C764  F8DF 7140		ldr r7, [pc, #+320] ; 0x4
+0800C768  5FF0     		ldrsh r0, [r6, +r7]
+
+#233									Video_EnterEdit	{LNXT:113|115|-1}
+(*) UINT
+0800C76A  F8DF 4188		ldr r4, [pc, #+392] ; 0x80C75AD
+0800C76E  F044 0401		orr r4, r4, #1
+0800C772  47A0     		blx r4
+
+#234									ST		res	{LNXT:113|115|-1}
+(-) USINT
+0800C774  7030     		strb r0, [r6]
+
+#235		
+#236		
+#237									(* IF res = kKEY_ArrowUp *)
+#238									LD		res	{LNXT:115|-1|-1}
+(-) UNDEF
+0800C776  7830     		ldrb r0, [r6]
+
+#239									EQ		kKEY_ArrowUp	{LNXT:115|-1|-1}
+(*) USINT
+0800C778  280B     		cmp r0, #11
+0800C77A  BF18 2000		nemov r0, #0
+0800C77E  BF08 2001		eqmov r0, #1
+
+#240									JMPCN	$label15	{LNXT:115|117|122}
+(-) BOOL
+0800C782  2800     		cmp r0, #0
+0800C784  D02A     		beq #84 ; 0x0800C7DC
+
+
+#241		
+#242									(* THEN *)
+#243		
+#244										(* iNextSel := TO_INT( Video_NextEdit( TRUE ) ); *)
+#245										LDP0		TRUE	{LNXT:117|118|-1}
+(-) BOOL
+#246										Video_NextEdit	{LNXT:117|118|-1}
+(*) BOOL
+0800C788  2701     		mov r7, #1 ; 1
+0800C78A  4638     		mov r0, r7
+0800C78C  F8DF 4168		ldr r4, [pc, #+360] ; 0x80C79FD
+0800C790  F044 0401		orr r4, r4, #1
+0800C794  47A0     		blx r4
+
+#247										TO_INT	{LNXT:117|118|-1}
+(-) UINT
+0800C796  B200     		sxth r0, r0
+
+#248										ST		iNextSel	{LNXT:117|118|-1}
+(*) INT
+0800C798  F8DF 710C		ldr r7, [pc, #+268] ; 0x4
+0800C79C  53F0     		strh r0, [r6, +r7]
+
+#249		
+#250		
+#251										(* IF iNextSel > -1 *)
+#252										LD		iNextSel	{LNXT:118|-1|-1}
+(*) UNDEF
+0800C79E  F8DF 7108		ldr r7, [pc, #+264] ; 0x4
+0800C7A2  5FF0     		ldrsh r0, [r6, +r7]
+
+#253										GT		-1	{LNXT:118|-1|-1}
+(*) INT
+0800C7A4  F04F 37FF		mov r7, #4294967295 ; 4294967295
+0800C7A8  42B8     		cmp r0, r7
+0800C7AA  BFD8 2000		lemov r0, #0
+0800C7AE  BFC8 2001		gtmov r0, #1
+
+#254										JMPCN	$label17	{LNXT:118|119|131}
+(-) BOOL
+0800C7B2  2800     		cmp r0, #0
+0800C7B4  D010     		beq #32 ; 0x0800C7D8
+
+
+#255		
+#256										(* THEN *)
+#257		
+#258											(* res := Video_SendEvent( kWM_SELECT, TO_UINT(iNextSel) ); *)
+#259											LDP0		iNextSel	{LNXT:119|131|-1}
+(-) BOOL
+#260											TO_UINT	{LNXT:119|131|-1}
+(*) BOOL
+0800C7B8  F8DF 70EC		ldr r7, [pc, #+236] ; 0x4
+0800C7BC  5FF0     		ldrsh r0, [r6, +r7]
+
+#261											ST		$$TMP1	{LNXT:119|131|-1}
+(*) UINT
+0800C7BE  F8DF 710C		ldr r7, [pc, #+268] ; 0x38
+0800C7C2  53F0     		strh r0, [r6, +r7]
+
+#262											LDP0		kWM_SELECT	{LNXT:119|131|-1}
+(-) UINT
+#263											Video_SendEvent		$$TMP1	{LNXT:119|131|-1}
+(*) UINT
+0800C7C4  2003     		mov r0, #3 ; 3
+0800C7C6  F8DF 7104		ldr r7, [pc, #+260] ; 0x38
+0800C7CA  5BF1     		ldrh r1, [r6, +r7]
+0800C7CC  F8DF 411C		ldr r4, [pc, #+284] ; 0x80C74CF
+0800C7D0  F044 0401		orr r4, r4, #1
+0800C7D4  47A0     		blx r4
+
+#264											ST		res	{LNXT:119|131|-1}
+(-) USINT
+0800C7D6  7030     		strb r0, [r6]
+
+#265		
+#266		$label17:
+#267										(* END_IF *)
+#268										JMP		$label16	{LNXT:115|117|122}
+(-) USINT
+0800C7D8  E031     		b #98 ; 0x0800C83E
+
+
+#269		$label15:
+#270		
+#271									(* ELSIF res = kKEY_ArrowDw *)
+#272									LD		res	{LNXT:122|-1|-1}
+(-) UNDEF
+0800C7DC  7830     		ldrb r0, [r6]
+
+#273									EQ		kKEY_ArrowDw	{LNXT:122|-1|-1}
+(*) USINT
+0800C7DE  280A     		cmp r0, #10
+0800C7E0  BF18 2000		nemov r0, #0
+0800C7E4  BF08 2001		eqmov r0, #1
+
+#274									JMPCN	$label16	{LNXT:122|124|131}
+(-) BOOL
+0800C7E8  2800     		cmp r0, #0
+0800C7EA  D028     		beq #80 ; 0x0800C83E
+
+
+#275		
+#276									(* THEN *)
+#277		
+#278										(* iNextSel := TO_INT( Video_PrevEdit( TRUE ) ); *)
+#279										LDP0		TRUE	{LNXT:124|125|-1}
+(-) BOOL
+#280										Video_PrevEdit	{LNXT:124|125|-1}
+(*) BOOL
+0800C7EE  2701     		mov r7, #1 ; 1
+0800C7F0  4638     		mov r0, r7
+0800C7F2  F8DF 4108		ldr r4, [pc, #+264] ; 0x80C7EF9
+0800C7F6  F044 0401		orr r4, r4, #1
+0800C7FA  47A0     		blx r4
+
+#281										TO_INT	{LNXT:124|125|-1}
+(-) UINT
+0800C7FC  B200     		sxth r0, r0
+
+#282										ST		iNextSel	{LNXT:124|125|-1}
+(*) INT
+0800C7FE  F8DF 70A8		ldr r7, [pc, #+168] ; 0x4
+0800C802  53F0     		strh r0, [r6, +r7]
+
+#283		
+#284		
+#285										(* IF iNextSel > -1 *)
+#286										LD		iNextSel	{LNXT:125|-1|-1}
+(*) UNDEF
+0800C804  F8DF 70A0		ldr r7, [pc, #+160] ; 0x4
+0800C808  5FF0     		ldrsh r0, [r6, +r7]
+
+#287										GT		-1	{LNXT:125|-1|-1}
+(*) INT
+0800C80A  F04F 37FF		mov r7, #4294967295 ; 4294967295
+0800C80E  42B8     		cmp r0, r7
+0800C810  BFD8 2000		lemov r0, #0
+0800C814  BFC8 2001		gtmov r0, #1
+
+#288										JMPCN	$label18	{LNXT:125|126|131}
+(-) BOOL
+0800C818  2800     		cmp r0, #0
+0800C81A  D010     		beq #32 ; 0x0800C83E
+
+
+#289		
+#290										(* THEN *)
+#291		
+#292											(* res := Video_SendEvent( kWM_SELECT, TO_UINT(iNextSel) ); *)
+#293											LDP0		iNextSel	{LNXT:126|131|-1}
+(-) BOOL
+#294											TO_UINT	{LNXT:126|131|-1}
+(*) BOOL
+0800C81E  F8DF 7088		ldr r7, [pc, #+136] ; 0x4
+0800C822  5FF0     		ldrsh r0, [r6, +r7]
+
+#295											ST		$$TMP1	{LNXT:126|131|-1}
+(*) UINT
+0800C824  F8DF 70A4		ldr r7, [pc, #+164] ; 0x38
+0800C828  53F0     		strh r0, [r6, +r7]
+
+#296											LDP0		kWM_SELECT	{LNXT:126|131|-1}
+(-) UINT
+#297											Video_SendEvent		$$TMP1	{LNXT:126|131|-1}
+(*) UINT
+0800C82A  2003     		mov r0, #3 ; 3
+0800C82C  F8DF 709C		ldr r7, [pc, #+156] ; 0x38
+0800C830  5BF1     		ldrh r1, [r6, +r7]
+0800C832  F8DF 40B8		ldr r4, [pc, #+184] ; 0x80C74CF
+0800C836  F044 0401		orr r4, r4, #1
+0800C83A  47A0     		blx r4
+
+#298											ST		res	{LNXT:126|131|-1}
+(-) USINT
+0800C83C  7030     		strb r0, [r6]
+
+#299		
+#300		$label18:
+#301										(* END_IF *)
+#302		
+#303		$label16:
+#304									(* END_IF *)
+#305		
+#306								(* UNTIL res <> kKEY_Confirm *)
+#307		
+#308								(*  *)
+#309								LD		res	{LNXT:131|-1|-1}
+(-) UNDEF
+0800C83E  7830     		ldrb r0, [r6]
+
+#310								NE		kKEY_Confirm	{LNXT:131|-1|-1}
+(*) USINT
+0800C840  280E     		cmp r0, #14
+0800C842  BF08 2000		eqmov r0, #0
+0800C846  BF18 2001		nemov r0, #1
+
+#311									JMPCN	$label13	{LNXT:131|113|134}
+(-) BOOL
+0800C84A  2800     		cmp r0, #0
+0800C84C  D08A     		beq #-236 ; 0x0800C764
+
+#312		$label14:
+#313		
+#314								(* END_REPEAT *)
+#315		
+#316		
+#317								(* IF res <> 255 *)
+#318								LD		res	{LNXT:134|-1|-1}
+(-) UNDEF
+0800C84E  7830     		ldrb r0, [r6]
+
+#319								NE		255	{LNXT:134|-1|-1}
+(*) USINT
+0800C850  28FF     		cmp r0, #255
+0800C852  BF08 2000		eqmov r0, #0
+0800C856  BF18 2001		nemov r0, #1
+
+#320								JMPCN	$label19	{LNXT:134|136|82}
+(-) BOOL
+0800C85A  2800     		cmp r0, #0
+0800C85C  D01A     		beq #52 ; 0x0800C894
+
+
+#321		
+#322								(* THEN *)
+#323		
+#324									(* x1:= 0; *)
+#325									MOVE		0,x1	{LNXT:136|137|-1}
+(*) BOOL
+0800C860  2000     		mov r0, #0 ; 0
+0800C862  F8DF 7054		ldr r7, [pc, #+84] ; 0x28
+0800C866  53F0     		strh r0, [r6, +r7]
+
+#326		
+#327									(* y1:= 0; *)
+#328									MOVE		0,y1	{LNXT:137|138|-1}
+(*) UINT
+0800C868  2000     		mov r0, #0 ; 0
+0800C86A  F8DF 7050		ldr r7, [pc, #+80] ; 0x2A
+0800C86E  53F0     		strh r0, [r6, +r7]
+
+#329		
+#330									(* x2:= 239; *)
+#331									MOVE		239,x2	{LNXT:138|139|-1}
+(*) UINT
+0800C870  20EF     		mov r0, #239 ; 239
+0800C872  F8DF 704C		ldr r7, [pc, #+76] ; 0x2C
+0800C876  53F0     		strh r0, [r6, +r7]
+
+#332		
+#333									(* y2:= 319; *)
+#334									MOVE		319,y2	{LNXT:139|140|-1}
+(*) UINT
+0800C878  F8DF 7054		ldr r7, [pc, #+84] ; 0x13F
+0800C87C  4638     		mov r0, r7
+0800C87E  F8DF 7044		ldr r7, [pc, #+68] ; 0x2E
+0800C882  53F0     		strh r0, [r6, +r7]
+
+#335		
+#336									(* bMapsReset := TRUE; *)
+#337									MOVE		TRUE,bMapsReset	{LNXT:140|141|-1}
+(*) UINT
+0800C884  2001     		mov r0, #1 ; 1
+0800C886  F8DF 701C		ldr r7, [pc, #+28] ; 0x2
+0800C88A  55F0     		strb r0, [r6, +r7]
+
+#338		
+#339									(* bStatRedrw := TRUE; *)
+#340									MOVE		TRUE,bStatRedrw	{LNXT:141|82|-1}
+(*) BOOL
+0800C88C  2001     		mov r0, #1 ; 1
+0800C88E  F8DF 7010		ldr r7, [pc, #+16] ; 0x1
+0800C892  55F0     		strb r0, [r6, +r7]
+
+#341		
+#342		$label19:
+#343								(* END_IF *)
+#344		
+#345		$label11:
+#346		
+#347							(* END_CASE *)
+#348		
+#349		$label8:
+#350		
+#351						(* END_CASE *)
+#352		
+#353		$label7:
+#354					(* END_IF *)
+#355					JMP		$label4	{LNXT:82|85|31}
+(-) BOOL
+0800C894  E6F9     		b #-526 ; 0x0800C68A
+
+#356		
+#357		$label5:
+#358				(* END_WHILE *)
+#359				JMP		$label0	{LNXT:31|34|-1}
+(-) BOOL
+0800C896  E640     		b #-896 ; 0x0800C51A
+
+0800C898  E8BD 4040		ldmia sp!, { r6, lr }
+
+0800C89C  4770     		bx lr
+
+0800C8A0  00000001		; 0x00000001
+0800C8A4  00000002		; 0x00000002
+0800C8A8  00000004		; 0x00000004
+0800C8AC  00000020		; 0x00000020
+0800C8B0  00000024		; 0x00000024
+0800C8B4  00000026		; 0x00000026
+0800C8B8  00000028		; 0x00000028
+0800C8BC  0000002A		; 0x0000002A
+0800C8C0  0000002C		; 0x0000002C
+0800C8C4  0000002E		; 0x0000002E
+0800C8C8  00000034		; 0x00000034
+0800C8CC  00000038		; 0x00000038
+0800C8D0  0000013F		; 0x0000013F
+0800C8D4  00C0C0C0		; 0x00C0C0C0
+0800C8D8  0800C120		; 0x0800C120
+0800C8DC  0800C148		; 0x0800C148
+0800C8E0  080C5D39		; 0x080C5D39
+0800C8E4  080C65DB		; 0x080C65DB
+0800C8E8  080C6679		; 0x080C6679
+0800C8EC  080C74CF		; 0x080C74CF
+0800C8F0  080C7531		; 0x080C7531
+0800C8F4  080C75AD		; 0x080C75AD
+0800C8F8  080C79FD		; 0x080C79FD
+0800C8FC  080C7EF9		; 0x080C7EF9
+0800C900  080C8435		; 0x080C8435
+0800C904  080C8445		; 0x080C8445
+0800C908  080C8459		; 0x080C8459
+0800C90C  080C8467		; 0x080C8467
+0800C910  080CA4FD		; 0x080CA4FD
+0800C914  080CCE77		; 0x080CCE77
+0800C918  2000C814		; 0x2000C814
+0800C91C  2000C81C		; 0x2000C81C
+0800C920  2000C86C		; 0x2000C86C
+0800C924  2000C86E		; 0x2000C86E
+0800C928  2000C888		; 0x2000C888
+0800C92C  2000C88C		; 0x2000C88C
+0800C930  2000C89A		; 0x2000C89A
+0800C934  2000C8CC		; 0x2000C8CC
+0800C938  2000C929		; 0x2000C929
+0800C93C  2000C938		; 0x2000C938
+0800C940  2000C946		; 0x2000C946
+0800C944  2000C978		; 0x2000C978
+0800C948  2000C9D5		; 0x2000C9D5
+
+
+Frame allocation:
+
+	0000       : VAR res
+	0001 bit  0: VAR bStatRedrw
+	0002 bit  0: VAR bMapsReset
+	0004       : VAR iNextSel
+	0006       : VAR $Set_IndexVisEl
+	0008       : VAR $Set_CycleRefresh
+	000C       : VAR $Set_PtrBoolVis
+	0010 bit  0: VAR $Set_VisEl
+	0012       : VAR $Set_IndexPageInSet
+	0014 bit  0: VAR $Set_ForcePageReload
+	0015 bit  0: VAR $Set_NextPage
+	0016 bit  0: VAR $Set_PrevPage
+	0018       : VAR $Set_LocalSetPagNumber
+	001A       : VAR $Set_NumVisEl
+	001C       : VAR $Set_LastFirstEl
+	0020       : VAR udiev
+	0024       : VAR ev
+	0026       : VAR key
+	0028       : VAR x1
+	002A       : VAR y1
+	002C       : VAR x2
+	002E       : VAR y2
+	0030       : VAR wParam
+	0032       : VAR uiOutVar
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: main
+**************************************************
+
+PROGRAM main
+
+END_PROGRAM
+
+0800C950  B082     		sub sp, sp, #8
+0800C952  F8CD E000		str lr, [sp]
+0800C956  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:main}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* cnt := cnt + 1; *)
+#4			LD		cnt	{LNXT:2|2|-1}
+(*) UNDEF
+0800C95A  F8DF 701C		ldr r7, [pc, #+28] ; 0x2000C812
+0800C95E  F9B7 0000		ldrsh r0, [r7]
+
+#5			ADD		1	{LNXT:2|2|-1}
+(-) INT
+0800C962  1C40     		add r0, r0, #1
+
+#6			ST		cnt	{LNXT:2|2|-1}
+(*) INT
+0800C964  F8DF 7010		ldr r7, [pc, #+16] ; 0x2000C812
+0800C968  8038     		strh r0, [r7]
+
+0800C96A  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800C96E  F8DD E000		ldr lr, [sp]
+0800C972  B002     		add sp, sp, #8
+
+0800C974  4770     		bx lr
+
+0800C978  2000C812		; 0x2000C812
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+0800C97C  4770     		bx lr
+
+
+*** OUTPUT:
+0800C97E  4770     		bx lr
+
+
+
+**************************************************
+	Task Background init code
+**************************************************
+
+0800C980  B082     		sub sp, sp, #8
+0800C982  F8CD E000		str lr, [sp]
+0800C986  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+0800C98A  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800C98E  F8DD E000		ldr lr, [sp]
+0800C992  B002     		add sp, sp, #8
+
+0800C994  4770     		bx lr
+
+**************************************************
+	List program: PageDraw
+**************************************************
+
+PROGRAM PageDraw
+
+        VAR
+res : USINT;
+	END_VAR
+
+END_PROGRAM
+
+0800C9A0  B082     		sub sp, sp, #8
+0800C9A2  F8CD E000		str lr, [sp]
+0800C9A6  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:PageDraw}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* res := Video_Lock( res ); *)
+#4			LDP0		res	{LNXT:3|6|-1}
+(-) UDINT
+#5			Video_Lock	{LNXT:3|6|-1}
+(*) UDINT
+0800C9AA  F8DF 7250		ldr r7, [pc, #+592] ; 0x2000C811
+0800C9AE  7838     		ldrb r0, [r7]
+0800C9B0  F8DF 4238		ldr r4, [pc, #+568] ; 0x80C8435
+0800C9B4  F044 0401		orr r4, r4, #1
+0800C9B8  47A0     		blx r4
+
+#6			ST		res	{LNXT:3|6|-1}
+(*) USINT
+0800C9BA  F8DF 7240		ldr r7, [pc, #+576] ; 0x2000C811
+0800C9BE  7038     		strb r0, [r7]
+
+#7		
+#8			(* res := Video_SetUseBitmapsColorDepth( TRUE ); *)
+#9			LDP0		TRUE	{LNXT:6|9|-1}
+(-) USINT
+#10			Video_SetUseBitmapsColorDepth	{LNXT:6|9|-1}
+(*) USINT
+0800C9C0  2001     		mov r0, #1 ; 1
+0800C9C2  F8DF 4230		ldr r4, [pc, #+560] ; 0x80C9A29
+0800C9C6  F044 0401		orr r4, r4, #1
+0800C9CA  47A0     		blx r4
+
+#11			ST		res	{LNXT:6|9|-1}
+(*) BOOL
+0800C9CC  F8DF 722C		ldr r7, [pc, #+556] ; 0x2000C811
+0800C9D0  7038     		strb r0, [r7]
+
+#12		
+#13			(* res := Video_InitHMI_ZOrder( TRUE ); *)
+#14			LDP0		TRUE	{LNXT:9|12|-1}
+(-) USINT
+#15			Video_InitHMI_ZOrder	{LNXT:9|12|-1}
+(*) USINT
+0800C9D2  2001     		mov r0, #1 ; 1
+0800C9D4  F8DF 4204		ldr r4, [pc, #+516] ; 0x80C4BF9
+0800C9D8  F044 0401		orr r4, r4, #1
+0800C9DC  47A0     		blx r4
+
+#16			ST		res	{LNXT:9|12|-1}
+(*) BOOL
+0800C9DE  F8DF 721C		ldr r7, [pc, #+540] ; 0x2000C811
+0800C9E2  7038     		strb r0, [r7]
+
+#17		
+#18			(* res := Video_Switch( TRUE ); *)
+#19			LDP0		TRUE	{LNXT:12|15|-1}
+(-) USINT
+#20			Video_Switch	{LNXT:12|15|-1}
+(*) USINT
+0800C9E4  2701     		mov r7, #1 ; 1
+0800C9E6  4638     		mov r0, r7
+0800C9E8  F8DF 41EC		ldr r4, [pc, #+492] ; 0x80C4BF5
+0800C9EC  F044 0401		orr r4, r4, #1
+0800C9F0  47A0     		blx r4
+
+#21			ST		res	{LNXT:12|15|-1}
+(*) USINT
+0800C9F2  F8DF 7208		ldr r7, [pc, #+520] ; 0x2000C811
+0800C9F6  7038     		strb r0, [r7]
+
+#22		
+#23			(* giStackPtr := 0; *)
+#24			MOVE		0,giStackPtr	{LNXT:15|18|-1}
+(*) USINT
+0800C9F8  2000     		mov r0, #0 ; 0
+0800C9FA  F8DF 7204		ldr r7, [pc, #+516] ; 0x2000C814
+0800C9FE  8038     		strh r0, [r7]
+
+#25		
+#26			(* $giBackBufferCurr := -1; *)
+#27			MOVE		-1,$giBackBufferCurr	{LNXT:18|19|-1}
+(*) INT
+0800CA00  F04F 30FF		mov r0, #4294967295 ; 4294967295
+0800CA04  F8DF 71FC		ldr r7, [pc, #+508] ; 0x2000C816
+0800CA08  8038     		strh r0, [r7]
+
+#28		
+#29			(* $giBackBufferFirst := -1; *)
+#30			MOVE		-1,$giBackBufferFirst	{LNXT:19|20|-1}
+(*) INT
+0800CA0A  F04F 30FF		mov r0, #4294967295 ; 4294967295
+0800CA0E  F8DF 71F8		ldr r7, [pc, #+504] ; 0x2000C818
+0800CA12  8038     		strh r0, [r7]
+
+#31		
+#32			(* $giBackBufferLast := -1; *)
+#33			MOVE		-1,$giBackBufferLast	{LNXT:20|23|-1}
+(*) INT
+0800CA14  F04F 30FF		mov r0, #4294967295 ; 4294967295
+0800CA18  F8DF 71F0		ldr r7, [pc, #+496] ; 0x2000C81A
+0800CA1C  8038     		strh r0, [r7]
+
+#34		
+#35			(* res := Video_SetEditKey( 0, kKEY_Enter ); *)
+#36			LDP0		0	{LNXT:23|24|-1}
+(-) INT
+#37			Video_SetEditKey		kKEY_Enter	{LNXT:23|24|-1}
+(*) INT
+0800CA1E  2000     		mov r0, #0 ; 0
+0800CA20  210D     		mov r1, #13 ; 13
+0800CA22  F8DF 41C0		ldr r4, [pc, #+448] ; 0x80C66BB
+0800CA26  F044 0401		orr r4, r4, #1
+0800CA2A  47A0     		blx r4
+
+#38			ST		res	{LNXT:23|24|-1}
+(*) USINT
+0800CA2C  F8DF 71CC		ldr r7, [pc, #+460] ; 0x2000C811
+0800CA30  7038     		strb r0, [r7]
+
+#39		
+#40			(* res := Video_SetEditKey( 1, kKEY_Esc ); *)
+#41			LDP0		1	{LNXT:24|25|-1}
+(-) USINT
+#42			Video_SetEditKey		kKEY_Esc	{LNXT:24|25|-1}
+(*) USINT
+0800CA32  2001     		mov r0, #1 ; 1
+0800CA34  211B     		mov r1, #27 ; 27
+0800CA36  F8DF 41AC		ldr r4, [pc, #+428] ; 0x80C66BB
+0800CA3A  F044 0401		orr r4, r4, #1
+0800CA3E  47A0     		blx r4
+
+#43			ST		res	{LNXT:24|25|-1}
+(*) USINT
+0800CA40  F8DF 71B8		ldr r7, [pc, #+440] ; 0x2000C811
+0800CA44  7038     		strb r0, [r7]
+
+#44		
+#45			(* res := Video_SetEditKey( 2, kKEY_Del ); *)
+#46			LDP0		2	{LNXT:25|26|-1}
+(-) USINT
+#47			Video_SetEditKey		kKEY_Del	{LNXT:25|26|-1}
+(*) USINT
+0800CA46  2002     		mov r0, #2 ; 2
+0800CA48  217F     		mov r1, #127 ; 127
+0800CA4A  F8DF 4198		ldr r4, [pc, #+408] ; 0x80C66BB
+0800CA4E  F044 0401		orr r4, r4, #1
+0800CA52  47A0     		blx r4
+
+#48			ST		res	{LNXT:25|26|-1}
+(*) USINT
+0800CA54  F8DF 71A4		ldr r7, [pc, #+420] ; 0x2000C811
+0800CA58  7038     		strb r0, [r7]
+
+#49		
+#50			(* res := Video_SetEditKey( 3, kKEY_Left ); *)
+#51			LDP0		3	{LNXT:26|27|-1}
+(-) USINT
+#52			Video_SetEditKey		kKEY_Left	{LNXT:26|27|-1}
+(*) USINT
+0800CA5A  2003     		mov r0, #3 ; 3
+0800CA5C  2108     		mov r1, #8 ; 8
+0800CA5E  F8DF 4184		ldr r4, [pc, #+388] ; 0x80C66BB
+0800CA62  F044 0401		orr r4, r4, #1
+0800CA66  47A0     		blx r4
+
+#53			ST		res	{LNXT:26|27|-1}
+(*) USINT
+0800CA68  F8DF 7190		ldr r7, [pc, #+400] ; 0x2000C811
+0800CA6C  7038     		strb r0, [r7]
+
+#54		
+#55			(* res := Video_SetEditKey( 4, kKEY_Right ); *)
+#56			LDP0		4	{LNXT:27|28|-1}
+(-) USINT
+#57			Video_SetEditKey		kKEY_Right	{LNXT:27|28|-1}
+(*) USINT
+0800CA6E  2004     		mov r0, #4 ; 4
+0800CA70  210C     		mov r1, #12 ; 12
+0800CA72  F8DF 4170		ldr r4, [pc, #+368] ; 0x80C66BB
+0800CA76  F044 0401		orr r4, r4, #1
+0800CA7A  47A0     		blx r4
+
+#58			ST		res	{LNXT:27|28|-1}
+(*) USINT
+0800CA7C  F8DF 717C		ldr r7, [pc, #+380] ; 0x2000C811
+0800CA80  7038     		strb r0, [r7]
+
+#59		
+#60			(* res := Video_SetEditKey( 5, kKEY_ArrowUp ); *)
+#61			LDP0		5	{LNXT:28|29|-1}
+(-) USINT
+#62			Video_SetEditKey		kKEY_ArrowUp	{LNXT:28|29|-1}
+(*) USINT
+0800CA82  2005     		mov r0, #5 ; 5
+0800CA84  210B     		mov r1, #11 ; 11
+0800CA86  F8DF 415C		ldr r4, [pc, #+348] ; 0x80C66BB
+0800CA8A  F044 0401		orr r4, r4, #1
+0800CA8E  47A0     		blx r4
+
+#63			ST		res	{LNXT:28|29|-1}
+(*) USINT
+0800CA90  F8DF 7168		ldr r7, [pc, #+360] ; 0x2000C811
+0800CA94  7038     		strb r0, [r7]
+
+#64		
+#65			(* res := Video_SetEditKey( 6, kKEY_ArrowDw ); *)
+#66			LDP0		6	{LNXT:29|30|-1}
+(-) USINT
+#67			Video_SetEditKey		kKEY_ArrowDw	{LNXT:29|30|-1}
+(*) USINT
+0800CA96  2006     		mov r0, #6 ; 6
+0800CA98  210A     		mov r1, #10 ; 10
+0800CA9A  F8DF 4148		ldr r4, [pc, #+328] ; 0x80C66BB
+0800CA9E  F044 0401		orr r4, r4, #1
+0800CAA2  47A0     		blx r4
+
+#68			ST		res	{LNXT:29|30|-1}
+(*) USINT
+0800CAA4  F8DF 7154		ldr r7, [pc, #+340] ; 0x2000C811
+0800CAA8  7038     		strb r0, [r7]
+
+#69		
+#70			(* res := Video_SetEditKey( 7, kKEY_Back ); *)
+#71			LDP0		7	{LNXT:30|31|-1}
+(-) USINT
+#72			Video_SetEditKey		kKEY_Back	{LNXT:30|31|-1}
+(*) USINT
+0800CAAA  2007     		mov r0, #7 ; 7
+0800CAAC  2104     		mov r1, #4 ; 4
+0800CAAE  F8DF 4134		ldr r4, [pc, #+308] ; 0x80C66BB
+0800CAB2  F044 0401		orr r4, r4, #1
+0800CAB6  47A0     		blx r4
+
+#73			ST		res	{LNXT:30|31|-1}
+(*) USINT
+0800CAB8  F8DF 7140		ldr r7, [pc, #+320] ; 0x2000C811
+0800CABC  7038     		strb r0, [r7]
+
+#74		
+#75			(* res := Video_SetEditKey( 8, kKEY_Tab ); *)
+#76			LDP0		8	{LNXT:31|32|-1}
+(-) USINT
+#77			Video_SetEditKey		kKEY_Tab	{LNXT:31|32|-1}
+(*) USINT
+0800CABE  2008     		mov r0, #8 ; 8
+0800CAC0  2109     		mov r1, #9 ; 9
+0800CAC2  F8DF 4120		ldr r4, [pc, #+288] ; 0x80C66BB
+0800CAC6  F044 0401		orr r4, r4, #1
+0800CACA  47A0     		blx r4
+
+#78			ST		res	{LNXT:31|32|-1}
+(*) USINT
+0800CACC  F8DF 712C		ldr r7, [pc, #+300] ; 0x2000C811
+0800CAD0  7038     		strb r0, [r7]
+
+#79		
+#80			(* res := Video_SetEditKey( 9, kKEY_Shift ); *)
+#81			LDP0		9	{LNXT:32|33|-1}
+(-) USINT
+#82			Video_SetEditKey		kKEY_Shift	{LNXT:32|33|-1}
+(*) USINT
+0800CAD2  2009     		mov r0, #9 ; 9
+0800CAD4  2106     		mov r1, #6 ; 6
+0800CAD6  F8DF 410C		ldr r4, [pc, #+268] ; 0x80C66BB
+0800CADA  F044 0401		orr r4, r4, #1
+0800CADE  47A0     		blx r4
+
+#83			ST		res	{LNXT:32|33|-1}
+(*) USINT
+0800CAE0  F8DF 7118		ldr r7, [pc, #+280] ; 0x2000C811
+0800CAE4  7038     		strb r0, [r7]
+
+#84		
+#85			(* res := Video_SetEditKey( 10, kKEY_Caps ); *)
+#86			LDP0		10	{LNXT:33|34|-1}
+(-) USINT
+#87			Video_SetEditKey		kKEY_Caps	{LNXT:33|34|-1}
+(*) USINT
+0800CAE6  200A     		mov r0, #10 ; 10
+0800CAE8  2105     		mov r1, #5 ; 5
+0800CAEA  F8DF 40F8		ldr r4, [pc, #+248] ; 0x80C66BB
+0800CAEE  F044 0401		orr r4, r4, #1
+0800CAF2  47A0     		blx r4
+
+#88			ST		res	{LNXT:33|34|-1}
+(*) USINT
+0800CAF4  F8DF 7104		ldr r7, [pc, #+260] ; 0x2000C811
+0800CAF8  7038     		strb r0, [r7]
+
+#89		
+#90			(* res := Video_SetEditKey( 11, kKEY_Confirm ); *)
+#91			LDP0		11	{LNXT:34|37|-1}
+(-) USINT
+#92			Video_SetEditKey		kKEY_Confirm	{LNXT:34|37|-1}
+(*) USINT
+0800CAFA  200B     		mov r0, #11 ; 11
+0800CAFC  210E     		mov r1, #14 ; 14
+0800CAFE  F8DF 40E4		ldr r4, [pc, #+228] ; 0x80C66BB
+0800CB02  F044 0401		orr r4, r4, #1
+0800CB06  47A0     		blx r4
+
+#93			ST		res	{LNXT:34|37|-1}
+(*) USINT
+0800CB08  F8DF 70F0		ldr r7, [pc, #+240] ; 0x2000C811
+0800CB0C  7038     		strb r0, [r7]
+
+#94		
+#95			(* res := Video_LoadLanguage( 0, 0 ); *)
+#96			LDP0		0	{LNXT:37|40|-1}
+(-) USINT
+#97			Video_LoadLanguage		0	{LNXT:37|40|-1}
+(*) USINT
+0800CB0E  2700     		mov r7, #0 ; 0
+0800CB10  4638     		mov r0, r7
+0800CB12  2700     		mov r7, #0 ; 0
+0800CB14  4639     		mov r1, r7
+0800CB16  F8DF 40D8		ldr r4, [pc, #+216] ; 0x80C8911
+0800CB1A  F044 0401		orr r4, r4, #1
+0800CB1E  47A0     		blx r4
+
+#98			ST		res	{LNXT:37|40|-1}
+(*) USINT
+0800CB20  F8DF 70D8		ldr r7, [pc, #+216] ; 0x2000C811
+0800CB24  7038     		strb r0, [r7]
+
+#99		
+#100			(* res := Video_AddFontUnicode( ?EWP2_8x16, EWP2_8x16_len, EWP2_8x16_hei ); *)
+#101			ADR		EWP2_8x16	{LNXT:40|43|-1}
+(*) USINT
+0800CB26  F8DF 00D0		ldr r0, [pc, #+208] ; 0x8200000
+
+#102			Video_AddFontUnicode		EWP2_8x16_len, EWP2_8x16_hei	{LNXT:40|43|-1}
+(*) @BYTE
+0800CB2A  4607     		mov r7, r0
+0800CB2C  4638     		mov r0, r7
+0800CB2E  2708     		mov r7, #8 ; 8
+0800CB30  4639     		mov r1, r7
+0800CB32  2210     		mov r2, #16 ; 16
+0800CB34  F8DF 40B0		ldr r4, [pc, #+176] ; 0x80C6745
+0800CB38  F044 0401		orr r4, r4, #1
+0800CB3C  47A0     		blx r4
+
+#103			ST		res	{LNXT:40|43|-1}
+(*) USINT
+0800CB3E  F8DF 70BC		ldr r7, [pc, #+188] ; 0x2000C811
+0800CB42  7038     		strb r0, [r7]
+
+#104		
+#105			(* res := Video_SetWndSysProps( ?EWP2_8x16, 12632256, 0 ); *)
+#106			ADR		EWP2_8x16	{LNXT:43|48|-1}
+(*) USINT
+0800CB44  F8DF 00B0		ldr r0, [pc, #+176] ; 0x8200000
+
+#107			Video_SetWndSysProps		12632256, 0	{LNXT:43|48|-1}
+(*) @BYTE
+0800CB48  4607     		mov r7, r0
+0800CB4A  4638     		mov r0, r7
+0800CB4C  F8DF 7080		ldr r7, [pc, #+128] ; 0xC0C0C0
+0800CB50  4639     		mov r1, r7
+0800CB52  2700     		mov r7, #0 ; 0
+0800CB54  463A     		mov r2, r7
+0800CB56  F8DF 4088		ldr r4, [pc, #+136] ; 0x80C6695
+0800CB5A  F044 0401		orr r4, r4, #1
+0800CB5E  47A0     		blx r4
+
+#108			ST		res	{LNXT:43|48|-1}
+(*) USINT
+0800CB60  F8DF 7098		ldr r7, [pc, #+152] ; 0x2000C811
+0800CB64  7038     		strb r0, [r7]
+
+#109		
+#110			(* guiCallStack[ giStackPtr ] := 0; *)
+#111			MOVE		0,guiCallStack[giStackPtr]	{LNXT:48|49|-1}
+(*) USINT
+0800CB66  2000     		mov r0, #0 ; 0
+0800CB68  F8DF 7094		ldr r7, [pc, #+148] ; 0x2000C814
+0800CB6C  F9B7 5000		ldrsh r5, [r7]
+0800CB70  F8DF 709C		ldr r7, [pc, #+156] ; 0x2000C81C
+0800CB74  EB07 0745		add r7, r7, r5, lsl #1
+0800CB78  8038     		strh r0, [r7]
+
+#112		
+#113			(* WHILE TRUE *)
+#114		$label0:
+#115			LD		TRUE	{LNXT:49|-1|-1}
+(-) UNDEF
+0800CB7A  2001     		mov r0, #1 ; 1
+
+#116			JMPCN		$label1	{LNXT:49|51|3}
+(-) BOOL
+0800CB7C  2800     		cmp r0, #0
+0800CB7E  D020     		beq #64 ; 0x0800CBC2
+
+
+#117		
+#118			(* DO *)
+#119		
+#120				(* CASE guiCallStack[ giStackPtr ] OF *)
+#121		
+#122				(* 0: *)
+#123				LD		guiCallStack[giStackPtr]	{LNXT:52|-1|-1}
+(*) UNDEF
+0800CB82  F8DF 707C		ldr r7, [pc, #+124] ; 0x2000C814
+0800CB86  F9B7 5000		ldrsh r5, [r7]
+0800CB8A  F8DF 7084		ldr r7, [pc, #+132] ; 0x2000C81C
+0800CB8E  EB07 0745		add r7, r7, r5, lsl #1
+0800CB92  8838     		ldrh r0, [r7]
+
+#124				EQ		0	{LNXT:52|-1|-1}
+(*) UINT
+0800CB94  2800     		cmp r0, #0
+0800CB96  BF18 2000		nemov r0, #0
+0800CB9A  BF08 2001		eqmov r0, #1
+
+#125				JMPC		$label3	{LNXT:52|53|49}
+(-) BOOL
+0800CB9E  2800     		cmp r0, #0
+0800CBA0  D102     		bne #4 ; 0x0800CBA8
+
+
+#126				JMP		$label2	{LNXT:52|53|49}
+(-) BOOL
+0800CBA4  E00C     		b #24 ; 0x0800CBC0
+
+
+#127		
+#128				(* Istruzioni di ciascun CASE: *)
+#129		
+#130		$label3:
+#131					(* fbpage1 *)
+#132					CAL		fbpage1	{LNXT:53|49|-1}
+(*) BOOL
+0800CBA8  E92D 0021		stmdb sp!, { r0, r5 }
+0800CBAC  F8DF 7064		ldr r7, [pc, #+100] ; 0x2000C830
+0800CBB0  463D     		mov r5, r7
+0800CBB2  F8DF 4020		ldr r4, [pc, #+32] ; 0x800C480
+0800CBB6  F044 0401		orr r4, r4, #1
+0800CBBA  47A0     		blx r4
+0800CBBC  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#133		
+#134		$label2:
+#135		
+#136				(* END_CASE *)
+#137				JMP		$label0	{LNXT:49|51|3}
+(-) BOOL
+0800CBC0  E7DB     		b #-74 ; 0x0800CB7A
+
+0800CBC2  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CBC6  F8DD E000		ldr lr, [sp]
+0800CBCA  B002     		add sp, sp, #8
+
+0800CBCC  4770     		bx lr
+
+0800CBD0  00C0C0C0		; 0x00C0C0C0
+0800CBD4  0800C480		; 0x0800C480
+0800CBD8  080C4BF5		; 0x080C4BF5
+0800CBDC  080C4BF9		; 0x080C4BF9
+0800CBE0  080C6695		; 0x080C6695
+0800CBE4  080C66BB		; 0x080C66BB
+0800CBE8  080C6745		; 0x080C6745
+0800CBEC  080C8435		; 0x080C8435
+0800CBF0  080C8911		; 0x080C8911
+0800CBF4  080C9A29		; 0x080C9A29
+0800CBF8  08200000		; 0x08200000
+0800CBFC  2000C811		; 0x2000C811
+0800CC00  2000C814		; 0x2000C814
+0800CC04  2000C816		; 0x2000C816
+0800CC08  2000C818		; 0x2000C818
+0800CC0C  2000C81A		; 0x2000C81A
+0800CC10  2000C81C		; 0x2000C81C
+0800CC14  2000C830		; 0x2000C830
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+0800CC18  4770     		bx lr
+
+
+*** OUTPUT:
+0800CC1A  4770     		bx lr
+
+
+
+**************************************************
+	Task Draw init code
+**************************************************
+
+0800CC1C  B082     		sub sp, sp, #8
+0800CC1E  F8CD E000		str lr, [sp]
+0800CC22  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+0800CC26  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CC2A  F8DD E000		ldr lr, [sp]
+0800CC2E  B002     		add sp, sp, #8
+
+0800CC30  4770     		bx lr
+
+**************************************************
+	List program: InitParDB
+**************************************************
+
+PROGRAM InitParDB
+
+        VAR
+warningsKiller : USINT;
+dummyCrc32 : UDINT;
+	END_VAR
+
+END_PROGRAM
+
+0800CC40  B082     		sub sp, sp, #8
+0800CC42  F8CD E000		str lr, [sp]
+0800CC46  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:InitParDB}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* dummyCrc32 := 0; *)
+#4			MOVE		0,dummyCrc32	{LNXT:3|5|-1}
+(*) UDINT
+0800CC4A  2000     		mov r0, #0 ; 0
+0800CC4C  F8DF 7050		ldr r7, [pc, #+80] ; 0x2000C80C
+0800CC50  6038     		str r0, [r7]
+
+#5		
+#6			(* warningsKiller := sysDBase_SetExtTable( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ); *)
+#7			LDP0		0	{LNXT:5|3|-1}
+(-) UDINT
+#8			sysDBase_SetExtTable		0, 0, 0, 0, 0, 0, 0, 0, 0	{LNXT:5|3|-1}
+(*) UDINT
+0800CC52  B086     		sub sp, sp, #24
+0800CC54  2700     		mov r7, #0 ; 0
+0800CC56  4638     		mov r0, r7
+0800CC58  2700     		mov r7, #0 ; 0
+0800CC5A  4639     		mov r1, r7
+0800CC5C  2700     		mov r7, #0 ; 0
+0800CC5E  463A     		mov r2, r7
+0800CC60  2700     		mov r7, #0 ; 0
+0800CC62  463B     		mov r3, r7
+0800CC64  2700     		mov r7, #0 ; 0
+0800CC66  F8CD 7000		str r7, [sp]
+0800CC6A  2700     		mov r7, #0 ; 0
+0800CC6C  F8CD 7004		str r7, [sp, #+4]
+0800CC70  2700     		mov r7, #0 ; 0
+0800CC72  F8CD 7008		str r7, [sp, #+8]
+0800CC76  2700     		mov r7, #0 ; 0
+0800CC78  F8CD 700C		str r7, [sp, #+12]
+0800CC7C  2700     		mov r7, #0 ; 0
+0800CC7E  F8CD 7010		str r7, [sp, #+16]
+0800CC82  2700     		mov r7, #0 ; 0
+0800CC84  F8CD 7014		str r7, [sp, #+20]
+0800CC88  F8DF 4010		ldr r4, [pc, #+16] ; 0x80D9E01
+0800CC8C  F044 0401		orr r4, r4, #1
+0800CC90  47A0     		blx r4
+0800CC92  B006     		add sp, sp, #24
+
+#9			ST		warningsKiller	{LNXT:5|3|-1}
+(*) USINT
+0800CC94  F8DF 700C		ldr r7, [pc, #+12] ; 0x2000C810
+0800CC98  7038     		strb r0, [r7]
+
+0800CC9A  E005     		b #10
+
+0800CC9C  080D9E01		; 0x080D9E01
+0800CCA0  2000C80C		; 0x2000C80C
+0800CCA4  2000C810		; 0x2000C810
+
+END_PROGRAM
+**************************************************
+	List program: ParCheck
+**************************************************
+
+PROGRAM ParCheck
+
+END_PROGRAM
+
+#0		{SRC:ParCheck}
+#1		(*$WAITSWITCH$*)
+#2		
+#3		
+#4			(* IF sysPar_PARPOLI AND 16#fc00) <> 2048 *)
+#5			LD		sysPar_PARPOLI	{LNXT:2|-1|-1}
+(*) UNDEF
+0800CCA8  F8DF 7034		ldr r7, [pc, #+52] ; 0x2000898A
+0800CCAC  8838     		ldrh r0, [r7]
+
+#6			AND		16#fc00	{LNXT:2|-1|-1}
+(*) UINT
+0800CCAE  F44F 477C		mov r7, #64512 ; 64512
+0800CCB2  4038     		and r0, r0, r7
+
+#7			NE		2048	{LNXT:2|-1|-1}
+(*) UINT
+0800CCB4  F44F 6700		mov r7, #2048 ; 2048
+0800CCB8  42B8     		cmp r0, r7
+0800CCBA  BF08 2000		eqmov r0, #0
+0800CCBE  BF18 2001		nemov r0, #1
+
+#8			JMPCN	$label0	{LNXT:2|3|2}
+(-) BOOL
+0800CCC2  2800     		cmp r0, #0
+0800CCC4  D005     		beq #10 ; 0x0800CCD2
+
+
+#9		
+#10			(* THEN *)
+#11		
+#12				(* WHILE TRUE *)
+#13		$label1:
+#14				LD		TRUE	{LNXT:3|-1|-1}
+(-) UNDEF
+0800CCC8  2001     		mov r0, #1 ; 1
+
+#15				JMPCN		$label2	{LNXT:3|2|2}
+(-) BOOL
+0800CCCA  2800     		cmp r0, #0
+0800CCCC  D001     		beq #2 ; 0x0800CCD2
+
+
+#16		
+#17				(* DO *)
+#18					JMP		$label1	{LNXT:3|2|2}
+(-) BOOL
+0800CCD0  E7FA     		b #-12 ; 0x0800CCC8
+
+0800CCD2  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CCD6  F8DD E000		ldr lr, [sp]
+0800CCDA  B002     		add sp, sp, #8
+
+0800CCDC  4770     		bx lr
+
+0800CCE0  2000898A		; 0x2000898A
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+0800CCE4  4770     		bx lr
+
+
+*** OUTPUT:
+0800CCE6  4770     		bx lr
+
+
+
+**************************************************
+	Task Init init code
+**************************************************
+
+0800CCE8  B082     		sub sp, sp, #8
+0800CCEA  F8CD E000		str lr, [sp]
+0800CCEE  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+0800CCF2  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CCF6  F8DD E000		ldr lr, [sp]
+0800CCFA  B002     		add sp, sp, #8
+
+0800CCFC  4770     		bx lr
+
+**************************************************
+	List program: PageRefresh
+**************************************************
+
+PROGRAM PageRefresh
+
+        VAR
+res : USINT;
+	END_VAR
+
+END_PROGRAM
+
+0800CD10  B082     		sub sp, sp, #8
+0800CD12  F8CD E000		str lr, [sp]
+0800CD16  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:PageRefresh}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* WHILE giStackPtr < 0 *)
+#4		$label0:
+#5			LD		giStackPtr	{LNXT:3|-1|-1}
+(*) UNDEF
+0800CD1A  F8DF 709C		ldr r7, [pc, #+156] ; 0x2000C814
+0800CD1E  F9B7 0000		ldrsh r0, [r7]
+
+#6			LT		0	{LNXT:3|-1|-1}
+(*) INT
+0800CD22  2800     		cmp r0, #0
+0800CD24  BFA8 2000		gemov r0, #0
+0800CD28  BFB8 2001		ltmov r0, #1
+
+#7			JMPCN		$label1	{LNXT:3|4|7}
+(-) BOOL
+0800CD2C  2800     		cmp r0, #0
+0800CD2E  D00B     		beq #22 ; 0x0800CD48
+
+
+#8		
+#9			(* DO *)
+#10				(* res := Video_Sleep(50); *)
+#11				LDP0		50	{LNXT:4|3|-1}
+(-) BOOL
+#12				Video_Sleep	{LNXT:4|3|-1}
+(*) BOOL
+0800CD32  2732     		mov r7, #50 ; 50
+0800CD34  4638     		mov r0, r7
+0800CD36  F8DF 407C		ldr r4, [pc, #+124] ; 0x80C8459
+0800CD3A  F044 0401		orr r4, r4, #1
+0800CD3E  47A0     		blx r4
+
+#13				ST		res	{LNXT:4|3|-1}
+(*) USINT
+0800CD40  F8DF 707C		ldr r7, [pc, #+124] ; 0x2000C889
+0800CD44  7038     		strb r0, [r7]
+
+#14				JMP		$label0	{LNXT:3|4|7}
+(-) USINT
+0800CD46  E7E8     		b #-48 ; 0x0800CD1A
+
+#15		
+#16		$label1:
+#17			(* END_WHILE *)
+#18		
+#19			(* WHILE TRUE *)
+#20		$label2:
+#21			LD		TRUE	{LNXT:7|-1|-1}
+(-) UNDEF
+0800CD48  2001     		mov r0, #1 ; 1
+
+#22			JMPCN		$label3	{LNXT:7|9|3}
+(-) BOOL
+0800CD4A  2800     		cmp r0, #0
+0800CD4C  D02A     		beq #84 ; 0x0800CDA4
+
+
+#23		
+#24			(* DO *)
+#25		
+#26				(* CASE guiCallStack[ giStackPtr ] OF *)
+#27		
+#28				(* 0: *)
+#29				LD		guiCallStack[giStackPtr]	{LNXT:10|-1|-1}
+(*) UNDEF
+0800CD50  F8DF 7064		ldr r7, [pc, #+100] ; 0x2000C814
+0800CD54  F9B7 5000		ldrsh r5, [r7]
+0800CD58  F8DF 7060		ldr r7, [pc, #+96] ; 0x2000C81C
+0800CD5C  EB07 0745		add r7, r7, r5, lsl #1
+0800CD60  8838     		ldrh r0, [r7]
+
+#30				EQ		0	{LNXT:10|-1|-1}
+(*) UINT
+0800CD62  2800     		cmp r0, #0
+0800CD64  BF18 2000		nemov r0, #0
+0800CD68  BF08 2001		eqmov r0, #1
+
+#31				JMPC		$label5	{LNXT:10|11|16}
+(-) BOOL
+0800CD6C  2800     		cmp r0, #0
+0800CD6E  D102     		bne #4 ; 0x0800CD76
+
+
+#32				JMP		$label4	{LNXT:10|11|16}
+(-) BOOL
+0800CD72  E00C     		b #24 ; 0x0800CD8E
+
+
+#33		
+#34				(* Istruzioni di ciascun CASE: *)
+#35		
+#36		$label5:
+#37					(* fbRefrpage1 *)
+#38					CAL		fbRefrpage1	{LNXT:11|16|-1}
+(*) BOOL
+0800CD76  E92D 0021		stmdb sp!, { r0, r5 }
+0800CD7A  F8DF 7048		ldr r7, [pc, #+72] ; 0x2000C9E4
+0800CD7E  463D     		mov r5, r7
+0800CD80  F8DF 402C		ldr r4, [pc, #+44] ; 0x800C3BC
+0800CD84  F044 0401		orr r4, r4, #1
+0800CD88  47A0     		blx r4
+0800CD8A  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#39		
+#40		$label4:
+#41		
+#42				(* END_CASE *)
+#43		
+#44				(* res := Video_Sleep( 50 ); *)
+#45				LDP0		50	{LNXT:16|7|-1}
+(-) BOOL
+#46				Video_Sleep	{LNXT:16|7|-1}
+(*) BOOL
+0800CD8E  2732     		mov r7, #50 ; 50
+0800CD90  4638     		mov r0, r7
+0800CD92  F8DF 4020		ldr r4, [pc, #+32] ; 0x80C8459
+0800CD96  F044 0401		orr r4, r4, #1
+0800CD9A  47A0     		blx r4
+
+#47				ST		res	{LNXT:16|7|-1}
+(*) USINT
+0800CD9C  F8DF 7020		ldr r7, [pc, #+32] ; 0x2000C889
+0800CDA0  7038     		strb r0, [r7]
+
+#48				JMP		$label2	{LNXT:7|9|3}
+(-) USINT
+0800CDA2  E7D1     		b #-94 ; 0x0800CD48
+
+0800CDA4  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CDA8  F8DD E000		ldr lr, [sp]
+0800CDAC  B002     		add sp, sp, #8
+
+0800CDAE  4770     		bx lr
+
+0800CDB0  0800C3BC		; 0x0800C3BC
+0800CDB4  080C8459		; 0x080C8459
+0800CDB8  2000C814		; 0x2000C814
+0800CDBC  2000C81C		; 0x2000C81C
+0800CDC0  2000C889		; 0x2000C889
+0800CDC4  2000C9E4		; 0x2000C9E4
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+0800CDC8  4770     		bx lr
+
+
+*** OUTPUT:
+0800CDCA  4770     		bx lr
+
+
+
+**************************************************
+	Task Refresh init code
+**************************************************
+
+0800CDCC  B082     		sub sp, sp, #8
+0800CDCE  F8CD E000		str lr, [sp]
+0800CDD2  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+0800CDD6  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800CDDA  F8DD E000		ldr lr, [sp]
+0800CDDE  B002     		add sp, sp, #8
+
+0800CDE0  4770     		bx lr
+
+
+
+**************************************************
+	Global init code
+**************************************************
+
+0800CDF0  B082     		sub sp, sp, #8
+0800CDF2  F8CD E000		str lr, [sp]
+0800CDF6  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+Var init: V:HMI:GISTACKPTR = -1
+0800CDFA  F8DF 0230		ldr r0, [pc, #+560] ; 0xFFFFFFFF
+0800CDFE  F8DF 7294		ldr r7, [pc, #+660] ; 0x2000C814
+0800CE02  8038     		strh r0, [r7]
+
+Var init: V:HMI:$GIBACKBUFFERCURR = -1
+0800CE04  F8DF 0224		ldr r0, [pc, #+548] ; 0xFFFFFFFF
+0800CE08  F8DF 728C		ldr r7, [pc, #+652] ; 0x2000C816
+0800CE0C  8038     		strh r0, [r7]
+
+Var init: V:HMI:$GIBACKBUFFERFIRST = -1
+0800CE0E  F8DF 021C		ldr r0, [pc, #+540] ; 0xFFFFFFFF
+0800CE12  F8DF 7288		ldr r7, [pc, #+648] ; 0x2000C818
+0800CE16  8038     		strh r0, [r7]
+
+Var init: V:HMI:$GIBACKBUFFERLAST = -1
+0800CE18  F8DF 0210		ldr r0, [pc, #+528] ; 0xFFFFFFFF
+0800CE1C  F8DF 7280		ldr r7, [pc, #+640] ; 0x2000C81A
+0800CE20  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.X = 58
+0800CE22  F8DF 0224		ldr r0, [pc, #+548] ; 0x3A
+0800CE26  F8DF 727C		ldr r7, [pc, #+636] ; 0x2000C896
+0800CE2A  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.Y = 75
+0800CE2C  F8DF 021C		ldr r0, [pc, #+540] ; 0x4B
+0800CE30  F8DF 7274		ldr r7, [pc, #+628] ; 0x2000C898
+0800CE34  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.PSTRING = 
+0800CE36  F8DF 7274		ldr r7, [pc, #+628] ; 0x2000C89C
+0800CE3A  F8DF 024C		ldr r0, [pc, #+588] ; 0x80080E0
+0800CE3E  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.PFONT = 
+0800CE40  F8DF 726C		ldr r7, [pc, #+620] ; 0x2000C8A0
+0800CE44  F8DF 0248		ldr r0, [pc, #+584] ; 0x8200000
+0800CE48  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.BCKCOL = 12632256
+0800CE4A  F8DF 0238		ldr r0, [pc, #+568] ; 0xC0C0C0
+0800CE4E  F8DF 7264		ldr r7, [pc, #+612] ; 0x2000C8A8
+0800CE52  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.PVISVAR = 1
+0800CE54  F8DF 01D8		ldr r0, [pc, #+472] ; 0x1
+0800CE58  F8DF 725C		ldr r7, [pc, #+604] ; 0x2000C8AC
+0800CE5C  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.FORMAT = 32
+0800CE5E  F8DF 01E0		ldr r0, [pc, #+480] ; 0x20
+0800CE62  F8DF 7258		ldr r7, [pc, #+600] ; 0x2000C8B0
+0800CE66  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_1.SELFORECOL = 12632256
+0800CE68  F8DF 0218		ldr r0, [pc, #+536] ; 0xC0C0C0
+0800CE6C  F8DF 7250		ldr r7, [pc, #+592] ; 0x2000C8BC
+0800CE70  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.WHND = 2
+0800CE72  F8DF 01C0		ldr r0, [pc, #+448] ; 0x2
+0800CE76  F8DF 724C		ldr r7, [pc, #+588] ; 0x2000C8DC
+0800CE7A  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.X1 = 94
+0800CE7C  F8DF 01D4		ldr r0, [pc, #+468] ; 0x5E
+0800CE80  F8DF 7244		ldr r7, [pc, #+580] ; 0x2000C8DE
+0800CE84  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.Y1 = 186
+0800CE86  F8DF 01E4		ldr r0, [pc, #+484] ; 0xBA
+0800CE8A  F8DF 7240		ldr r7, [pc, #+576] ; 0x2000C8E0
+0800CE8E  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.X2 = 157
+0800CE90  F8DF 01D4		ldr r0, [pc, #+468] ; 0x9D
+0800CE94  F8DF 7238		ldr r7, [pc, #+568] ; 0x2000C8E2
+0800CE98  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.Y2 = 201
+0800CE9A  F8DF 01D4		ldr r0, [pc, #+468] ; 0xC9
+0800CE9E  F8DF 7234		ldr r7, [pc, #+564] ; 0x2000C8E4
+0800CEA2  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.PFONT = 
+0800CEA4  F8DF 7230		ldr r7, [pc, #+560] ; 0x2000C8E8
+0800CEA8  F8DF 01E4		ldr r0, [pc, #+484] ; 0x8200000
+0800CEAC  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.BCKCOL = 32767
+0800CEAE  F8DF 01C4		ldr r0, [pc, #+452] ; 0x7FFF
+0800CEB2  F8DF 7228		ldr r7, [pc, #+552] ; 0x2000C8F4
+0800CEB6  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.FORESELCOL = 12632256
+0800CEB8  F8DF 01C8		ldr r0, [pc, #+456] ; 0xC0C0C0
+0800CEBC  F8DF 7220		ldr r7, [pc, #+544] ; 0x2000C8F8
+0800CEC0  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.BORDPTS = 1
+0800CEC2  F8DF 016C		ldr r0, [pc, #+364] ; 0x1
+0800CEC6  F8DF 721C		ldr r7, [pc, #+540] ; 0x2000C900
+0800CECA  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.RW = 1
+0800CECC  F8DF 0160		ldr r0, [pc, #+352] ; 0x1
+0800CED0  F8DF 7214		ldr r7, [pc, #+532] ; 0x2000C908
+0800CED4  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.REFR = 1
+0800CED6  F8DF 0158		ldr r0, [pc, #+344] ; 0x1
+0800CEDA  F8DF 7210		ldr r7, [pc, #+528] ; 0x2000C909
+0800CEDE  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.PVAR = 2101504
+0800CEE0  F8DF 019C		ldr r0, [pc, #+412] ; 0x201100
+0800CEE4  F8DF 7208		ldr r7, [pc, #+520] ; 0x2000C90C
+0800CEE8  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.TYPE = 5
+0800CEEA  F8DF 0150		ldr r0, [pc, #+336] ; 0x5
+0800CEEE  F8DF 7204		ldr r7, [pc, #+516] ; 0x2000C910
+0800CEF2  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.FORMAT = 553648140
+0800CEF4  F8DF 0278		ldr r0, [pc, #+632] ; 0x2100000C
+0800CEF8  F8DF 71FC		ldr r7, [pc, #+508] ; 0x2000C91C
+0800CEFC  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.PVISVAR = 1
+0800CEFE  F8DF 0130		ldr r0, [pc, #+304] ; 0x1
+0800CF02  F8DF 71F8		ldr r7, [pc, #+504] ; 0x2000C920
+0800CF06  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.PCANSEL = 1
+0800CF08  F8DF 0124		ldr r0, [pc, #+292] ; 0x1
+0800CF0C  F8DF 71F0		ldr r7, [pc, #+496] ; 0x2000C924
+0800CF10  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_3.ORDER = 2
+0800CF12  F8DF 0120		ldr r0, [pc, #+288] ; 0x2
+0800CF16  F8DF 71EC		ldr r7, [pc, #+492] ; 0x2000C928
+0800CF1A  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.WHND = 1
+0800CF1C  F8DF 0110		ldr r0, [pc, #+272] ; 0x1
+0800CF20  F8DF 71E4		ldr r7, [pc, #+484] ; 0x2000C940
+0800CF24  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.X = 54
+0800CF26  F8DF 011C		ldr r0, [pc, #+284] ; 0x36
+0800CF2A  F8DF 71E0		ldr r7, [pc, #+480] ; 0x2000C942
+0800CF2E  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.Y = 156
+0800CF30  F8DF 0130		ldr r0, [pc, #+304] ; 0x9C
+0800CF34  F8DF 71D8		ldr r7, [pc, #+472] ; 0x2000C944
+0800CF38  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.PSTRING = 
+0800CF3A  F8DF 71D8		ldr r7, [pc, #+472] ; 0x2000C948
+0800CF3E  F8DF 014C		ldr r0, [pc, #+332] ; 0x80080F8
+0800CF42  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.PFONT = 
+0800CF44  F8DF 71D0		ldr r7, [pc, #+464] ; 0x2000C94C
+0800CF48  F8DF 0144		ldr r0, [pc, #+324] ; 0x8200000
+0800CF4C  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.BCKCOL = 12632256
+0800CF4E  F8DF 0134		ldr r0, [pc, #+308] ; 0xC0C0C0
+0800CF52  F8DF 71C8		ldr r7, [pc, #+456] ; 0x2000C954
+0800CF56  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.PVISVAR = 1
+0800CF58  F8DF 00D4		ldr r0, [pc, #+212] ; 0x1
+0800CF5C  F8DF 71C0		ldr r7, [pc, #+448] ; 0x2000C958
+0800CF60  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.FORMAT = 32
+0800CF62  F8DF 00DC		ldr r0, [pc, #+220] ; 0x20
+0800CF66  F8DF 71BC		ldr r7, [pc, #+444] ; 0x2000C95C
+0800CF6A  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1STRING_4.SELFORECOL = 12632256
+0800CF6C  F8DF 0114		ldr r0, [pc, #+276] ; 0xC0C0C0
+0800CF70  F8DF 71B4		ldr r7, [pc, #+436] ; 0x2000C968
+0800CF74  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.WHND = 3
+0800CF76  F8DF 00C0		ldr r0, [pc, #+192] ; 0x3
+0800CF7A  F8DF 71B0		ldr r7, [pc, #+432] ; 0x2000C988
+0800CF7E  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.X1 = 91
+0800CF80  F8DF 00CC		ldr r0, [pc, #+204] ; 0x5B
+0800CF84  F8DF 71A8		ldr r7, [pc, #+424] ; 0x2000C98A
+0800CF88  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.Y1 = 100
+0800CF8A  F8DF 00CC		ldr r0, [pc, #+204] ; 0x64
+0800CF8E  F8DF 71A4		ldr r7, [pc, #+420] ; 0x2000C98C
+0800CF92  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.X2 = 154
+0800CF94  F8DF 00C8		ldr r0, [pc, #+200] ; 0x9A
+0800CF98  F8DF 719C		ldr r7, [pc, #+412] ; 0x2000C98E
+0800CF9C  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.Y2 = 115
+0800CF9E  F8DF 00BC		ldr r0, [pc, #+188] ; 0x73
+0800CFA2  F8DF 7198		ldr r7, [pc, #+408] ; 0x2000C990
+0800CFA6  8038     		strh r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.PFONT = 
+0800CFA8  F8DF 7194		ldr r7, [pc, #+404] ; 0x2000C994
+0800CFAC  F8DF 00E0		ldr r0, [pc, #+224] ; 0x8200000
+0800CFB0  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.BCKCOL = 65535
+0800CFB2  F8DF 00C4		ldr r0, [pc, #+196] ; 0xFFFF
+0800CFB6  F8DF 718C		ldr r7, [pc, #+396] ; 0x2000C9A0
+0800CFBA  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.FORESELCOL = 12632256
+0800CFBC  F8DF 00C4		ldr r0, [pc, #+196] ; 0xC0C0C0
+0800CFC0  F8DF 7184		ldr r7, [pc, #+388] ; 0x2000C9A4
+0800CFC4  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.BORDPTS = 1
+0800CFC6  F8DF 0068		ldr r0, [pc, #+104] ; 0x1
+0800CFCA  F8DF 7180		ldr r7, [pc, #+384] ; 0x2000C9AC
+0800CFCE  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.RW = 1
+0800CFD0  F8DF 005C		ldr r0, [pc, #+92] ; 0x1
+0800CFD4  F8DF 7178		ldr r7, [pc, #+376] ; 0x2000C9B4
+0800CFD8  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.REFR = 1
+0800CFDA  F8DF 0054		ldr r0, [pc, #+84] ; 0x1
+0800CFDE  F8DF 7174		ldr r7, [pc, #+372] ; 0x2000C9B5
+0800CFE2  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.PVAR = 2101248
+0800CFE4  F8DF 0094		ldr r0, [pc, #+148] ; 0x201000
+0800CFE8  F8DF 716C		ldr r7, [pc, #+364] ; 0x2000C9B8
+0800CFEC  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.TYPE = 5
+0800CFEE  F8DF 004C		ldr r0, [pc, #+76] ; 0x5
+0800CFF2  F8DF 7168		ldr r7, [pc, #+360] ; 0x2000C9BC
+0800CFF6  7038     		strb r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.FORMAT = 553648140
+0800CFF8  F8DF 0174		ldr r0, [pc, #+372] ; 0x2100000C
+0800CFFC  F8DF 7160		ldr r7, [pc, #+352] ; 0x2000C9C8
+0800D000  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.PVISVAR = 1
+0800D002  F8DF 002C		ldr r0, [pc, #+44] ; 0x1
+0800D006  F8DF 715C		ldr r7, [pc, #+348] ; 0x2000C9CC
+0800D00A  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.PCANSEL = 1
+0800D00C  F8DF 0020		ldr r0, [pc, #+32] ; 0x1
+0800D010  F8DF 7154		ldr r7, [pc, #+340] ; 0x2000C9D0
+0800D014  6038     		str r0, [r7]
+
+Var init: V:HMI:FBPAGE1EDIT_5.ORDER = 3
+0800D016  F8DF 0020		ldr r0, [pc, #+32] ; 0x3
+0800D01A  F8DF 7150		ldr r7, [pc, #+336] ; 0x2000C9D4
+0800D01E  7038     		strb r0, [r7]
+
+0800D020  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+0800D024  F8DD E000		ldr lr, [sp]
+0800D028  B002     		add sp, sp, #8
+
+0800D02A  4770     		bx lr
+
+0800D02C  FFFFFFFF		; 0xFFFFFFFF
+0800D030  00000001		; 0x00000001
+0800D034  00000002		; 0x00000002
+0800D038  00000003		; 0x00000003
+0800D03C  00000005		; 0x00000005
+0800D040  00000020		; 0x00000020
+0800D044  00000036		; 0x00000036
+0800D048  0000003A		; 0x0000003A
+0800D04C  0000004B		; 0x0000004B
+0800D050  0000005B		; 0x0000005B
+0800D054  0000005E		; 0x0000005E
+0800D058  00000064		; 0x00000064
+0800D05C  00000073		; 0x00000073
+0800D060  0000009A		; 0x0000009A
+0800D064  0000009C		; 0x0000009C
+0800D068  0000009D		; 0x0000009D
+0800D06C  000000BA		; 0x000000BA
+0800D070  000000C9		; 0x000000C9
+0800D074  00007FFF		; 0x00007FFF
+0800D078  0000FFFF		; 0x0000FFFF
+0800D07C  00201000		; 0x00201000
+0800D080  00201100		; 0x00201100
+0800D084  00C0C0C0		; 0x00C0C0C0
+0800D088  080080E0		; 0x080080E0
+0800D08C  080080F8		; 0x080080F8
+0800D090  08200000		; 0x08200000
+0800D094  2000C814		; 0x2000C814
+0800D098  2000C816		; 0x2000C816
+0800D09C  2000C818		; 0x2000C818
+0800D0A0  2000C81A		; 0x2000C81A
+0800D0A4  2000C896		; 0x2000C896
+0800D0A8  2000C898		; 0x2000C898
+0800D0AC  2000C89C		; 0x2000C89C
+0800D0B0  2000C8A0		; 0x2000C8A0
+0800D0B4  2000C8A8		; 0x2000C8A8
+0800D0B8  2000C8AC		; 0x2000C8AC
+0800D0BC  2000C8B0		; 0x2000C8B0
+0800D0C0  2000C8BC		; 0x2000C8BC
+0800D0C4  2000C8DC		; 0x2000C8DC
+0800D0C8  2000C8DE		; 0x2000C8DE
+0800D0CC  2000C8E0		; 0x2000C8E0
+0800D0D0  2000C8E2		; 0x2000C8E2
+0800D0D4  2000C8E4		; 0x2000C8E4
+0800D0D8  2000C8E8		; 0x2000C8E8
+0800D0DC  2000C8F4		; 0x2000C8F4
+0800D0E0  2000C8F8		; 0x2000C8F8
+0800D0E4  2000C900		; 0x2000C900
+0800D0E8  2000C908		; 0x2000C908
+0800D0EC  2000C909		; 0x2000C909
+0800D0F0  2000C90C		; 0x2000C90C
+0800D0F4  2000C910		; 0x2000C910
+0800D0F8  2000C91C		; 0x2000C91C
+0800D0FC  2000C920		; 0x2000C920
+0800D100  2000C924		; 0x2000C924
+0800D104  2000C928		; 0x2000C928
+0800D108  2000C940		; 0x2000C940
+0800D10C  2000C942		; 0x2000C942
+0800D110  2000C944		; 0x2000C944
+0800D114  2000C948		; 0x2000C948
+0800D118  2000C94C		; 0x2000C94C
+0800D11C  2000C954		; 0x2000C954
+0800D120  2000C958		; 0x2000C958
+0800D124  2000C95C		; 0x2000C95C
+0800D128  2000C968		; 0x2000C968
+0800D12C  2000C988		; 0x2000C988
+0800D130  2000C98A		; 0x2000C98A
+0800D134  2000C98C		; 0x2000C98C
+0800D138  2000C98E		; 0x2000C98E
+0800D13C  2000C990		; 0x2000C990
+0800D140  2000C994		; 0x2000C994
+0800D144  2000C9A0		; 0x2000C9A0
+0800D148  2000C9A4		; 0x2000C9A4
+0800D14C  2000C9AC		; 0x2000C9AC
+0800D150  2000C9B4		; 0x2000C9B4
+0800D154  2000C9B5		; 0x2000C9B5
+0800D158  2000C9B8		; 0x2000C9B8
+0800D15C  2000C9BC		; 0x2000C9BC
+0800D160  2000C9C8		; 0x2000C9C8
+0800D164  2000C9CC		; 0x2000C9CC
+0800D168  2000C9D0		; 0x2000C9D0
+0800D16C  2000C9D4		; 0x2000C9D4
+0800D170  2100000C		; 0x2100000C
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Code area type:          		       main code
+Start code area:          		0000000008008000h
+End code area:            		000000000800D180h
+Code size:                		00005180h
+
+Code area type:          		       auxiliary
+Start code area:          		0000000008200000h
+End code area:            		0000000008200830h
+Code size:                		00000830h
+
+Start local data area:    		000000002000C800h
+End local data area:      		000000002000C9F8h
+Local data size:          		000001F8h
+
+Start retentive data area:		0000000000000000h
+End retentive data area:  		0000000000000000h
+Retentive data size:      		00000000h
+
+Start bit data area:      		0000000000000000h
+End bit data area:        		0000000000000000h
+Bit data size:            		00000000h
+
+
+
+********************************************
+CODE ID:                                717EF1D4
+DEBUG MEMO ID:                          0000C026
+FULL MEMO ID:                           000018C3
+********************************************

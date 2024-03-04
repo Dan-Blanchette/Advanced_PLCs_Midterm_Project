@@ -1,0 +1,3 @@
+IP: 10.0.0.100
+
+Ethernet Card Static IP : 10.0.0.1

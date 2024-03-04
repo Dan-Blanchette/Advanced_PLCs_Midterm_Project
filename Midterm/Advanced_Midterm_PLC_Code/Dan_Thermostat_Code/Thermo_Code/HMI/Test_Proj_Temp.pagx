@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PRJ_RESOURCES version="20181002">
+	<LANGUAGES>
+		<LANG id="0" descr="BaseLanguage">
+			<ENUMS/>
+			<STRINGTABLE/>
+		</LANG>
+	</LANGUAGES>
+	<PAGES_INFO>
+		<MODEL>flat</MODEL>
+		<FIRST_PAGE>page1</FIRST_PAGE>
+		<CURR_LANG>0</CURR_LANG>
+		<TITLEBAR_FONT>EWP2_8x16</TITLEBAR_FONT>
+		<TITLEBAR_COLOR type="RGBColor">12632256</TITLEBAR_COLOR>
+		<TITLEBAR_BCKCOLOR type="RGBColor">0</TITLEBAR_BCKCOLOR>
+		<GLOBAL_TIMER/>
+	</PAGES_INFO>
+	<COMMON_OBJECTS/>
+	<RESOURCES>
+		<STRINGSENUMS useOnTarget="false" stringsIndexedActive="false" enumsIndexedActive="false"/>
+		<BITMAPS useOnTarget="false" downloadOnlyUsed="true" downloadChanged="false"/>
+		<FONTS useOnTarget="false" downloadUsedChars="true"/>
+	</RESOURCES>
+	<PAGES>
+		<PAGE name="page1">
+			<ATTRIBUTES>
+				<MSGID>0</MSGID>
+				<WNDMODE>0</WNDMODE>
+				<MODAL>No</MODAL>
+				<FONT>EWP2_8x16</FONT>
+				<COLOR type="RGBColor">0</COLOR>
+				<BCKCOLOR type="RGBColor">12632256</BCKCOLOR>
+				<STYLE>Flat</STYLE>
+				<XDIM>240</XDIM>
+				<YDIM>320</YDIM>
+				<XPOS>0</XPOS>
+				<YPOS>0</YPOS>
+				<CHARGRIDDIMX>1</CHARGRIDDIMX>
+				<CHARGRIDDIMY>1</CHARGRIDDIMY>
+				<CAPTION/>
+				<TITLEBAR>No</TITLEBAR>
+				<SYSMENU>No</SYSMENU>
+				<BORDER>No</BORDER>
+				<DESC/>
+			</ATTRIBUTES>
+			<OBJECTS>
+				<STRINGS>
+					<STRING name="String_1">
+						<FONT>EWP2_8x16</FONT>
+						<BCKCOLOR type="RGBColor">12632256</BCKCOLOR>
+						<COLOR type="RGBColor">0</COLOR>
+						<TEXT>
+							<![CDATA[Temperature[deg F]]]>
+						</TEXT>
+						<XPOS>58</XPOS>
+						<YPOS>75</YPOS>
+						<XDIM>144</XDIM>
+						<YDIM>16</YDIM>
+						<VISIBLE>TRUE</VISIBLE>
+						<ZORDER>1</ZORDER>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<BORDPTS>0</BORDPTS>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">12632256</SELCOL>
+						<NUMCHAR>0</NUMCHAR>
+						<ALIGN>Left</ALIGN>
+						<REFRESH>FALSE</REFRESH>
+						<SELECT>FALSE</SELECT>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+						</EVENTS>
+					</STRING>
+					<STRING name="String_4">
+						<FONT>EWP2_8x16</FONT>
+						<BCKCOLOR type="RGBColor">12632256</BCKCOLOR>
+						<COLOR type="RGBColor">0</COLOR>
+						<TEXT>
+							<![CDATA[Relative Humidity]]>
+						</TEXT>
+						<XPOS>54</XPOS>
+						<YPOS>156</YPOS>
+						<XDIM>136</XDIM>
+						<YDIM>16</YDIM>
+						<VISIBLE>TRUE</VISIBLE>
+						<ZORDER>4</ZORDER>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<BORDPTS>0</BORDPTS>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">12632256</SELCOL>
+						<NUMCHAR>0</NUMCHAR>
+						<ALIGN>Left</ALIGN>
+						<REFRESH>FALSE</REFRESH>
+						<SELECT>FALSE</SELECT>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+						</EVENTS>
+					</STRING>
+				</STRINGS>
+				<IMGS/>
+				<LINES/>
+				<RECTS/>
+				<ANIMS/>
+				<EDITS>
+					<EDIT name="Edit_3">
+						<FONT>EWP2_8x16</FONT>
+						<COLOR type="RGBColor">0</COLOR>
+						<BCKCOLOR type="RGBColor">32767</BCKCOLOR>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">12632256</SELCOL>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<BORDPTS>1</BORDPTS>
+						<XPOS>94</XPOS>
+						<YPOS>186</YPOS>
+						<XDIM>64</XDIM>
+						<YDIM>16</YDIM>
+						<NUMCHAR>8</NUMCHAR>
+						<ORDER>2</ORDER>
+						<FORMAT>%4.1d</FORMAT>
+						<ALIGN>Right</ALIGN>
+						<ACCESS>RW</ACCESS>
+						<DESC/>
+						<ZORDER>3</ZORDER>
+						<VAR type="INT">@LocalParameters.RH</VAR>
+						<TYPE>INT</TYPE>
+						<REFRESH>TRUE</REFRESH>
+						<VISIBLE>TRUE</VISIBLE>
+						<SELECT>TRUE</SELECT>
+						<LABEL/>
+						<VARMIN>*</VARMIN>
+						<VARMAX>*</VARMAX>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+							<EVENT name="OnGotFocus"/>
+							<EVENT name="OnLostFocus"/>
+							<EVENT name="OnClick"/>
+							<EVENT name="OnEnter"/>
+							<EVENT name="OnChange"/>
+						</EVENTS>
+					</EDIT>
+					<EDIT name="Edit_5">
+						<FONT>EWP2_8x16</FONT>
+						<COLOR type="RGBColor">0</COLOR>
+						<BCKCOLOR type="RGBColor">65535</BCKCOLOR>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">12632256</SELCOL>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<BORDPTS>1</BORDPTS>
+						<XPOS>91</XPOS>
+						<YPOS>100</YPOS>
+						<XDIM>64</XDIM>
+						<YDIM>16</YDIM>
+						<NUMCHAR>8</NUMCHAR>
+						<ORDER>3</ORDER>
+						<FORMAT>%4.1d</FORMAT>
+						<ALIGN>Right</ALIGN>
+						<ACCESS>RW</ACCESS>
+						<DESC/>
+						<ZORDER>5</ZORDER>
+						<VAR type="INT">@LocalParameters.NTC</VAR>
+						<TYPE>INT</TYPE>
+						<REFRESH>TRUE</REFRESH>
+						<VISIBLE>TRUE</VISIBLE>
+						<SELECT>TRUE</SELECT>
+						<LABEL/>
+						<VARMIN>*</VARMIN>
+						<VARMAX>*</VARMAX>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+							<EVENT name="OnGotFocus"/>
+							<EVENT name="OnLostFocus"/>
+							<EVENT name="OnClick"/>
+							<EVENT name="OnEnter"/>
+							<EVENT name="OnChange"/>
+						</EVENTS>
+					</EDIT>
+				</EDITS>
+				<TEXTBOXES/>
+				<COMBOBOXES/>
+				<BUTTONS/>
+				<CHECKBOXES/>
+				<PROGRESSES/>
+				<CHARTS/>
+				<CUSTOMS/>
+			</OBJECTS>
+			<EVENTS>
+				<EVENT name="OnLoad"/>
+				<EVENT name="OnUnload"/>
+				<EVENT name="OnActivate"/>
+				<EVENT name="OnDeactivate"/>
+				<EVENT name="OnDraw"/>
+				<EVENT name="OnTimer"/>
+				<EVENT name="OnAfterDraw"/>
+			</EVENTS>
+			<ACTIONS/>
+			<SCRIPT>
+				<![CDATA[]]>
+			</SCRIPT>
+		</PAGE>
+	</PAGES>
+	<ACTIONS/>
+	<FONTSTYLES/>
+	<EXPRESSIONS/>
+	<SCRIPT>
+		<![CDATA[]]>
+	</SCRIPT>
+	<TEMPLATES/>
+</PRJ_RESOURCES>

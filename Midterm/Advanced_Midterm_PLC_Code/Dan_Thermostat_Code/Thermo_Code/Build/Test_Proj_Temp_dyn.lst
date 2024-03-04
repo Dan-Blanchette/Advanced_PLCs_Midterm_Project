@@ -1,0 +1,887 @@
+***********************************************************************
+*
+*	DYNAMIC LINK AND INDIRECT ALLOCATION LISTING FOR: Test_Proj_Temp
+*
+***********************************************************************
+
+
+***************************************************
+	 FIRST CODE AREA
+***************************************************
+
+***************************************************
+	 DATABLOCK PATCHES
+***************************************************
+*
+* List of data blocks that will be checked run-time for consistency with
+* their definition available at compile-time
+*
+*
+* List of all references to data allocated on data blocks
+* along with the whole information required by the run-time linker
+*
+
+***************************************************
+	 FUNCTION PATCHES
+***************************************************
+
+NAME: Video_SetWndSysProps  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004B48
+
+NAME: Video_SetUseBitmapsColorDepth  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004925
+
+NAME: sysDBase_SetExtTable  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004C12
+
+NAME: Video_InitPage  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000458F
+
+NAME: Video_Sleep  - NUM: 4
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004462
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000046B4
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004C66
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004CC7
+
+NAME: Video_LoadLanguage  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004AFE
+
+NAME: Video_EnterEdit  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000475E
+
+NAME: Video_GetEvent  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000046CE
+
+NAME: Video_Unlock  - NUM: 3
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000444D
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004538
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004667
+
+NAME: Video_Lock  - NUM: 3
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000043DA
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000455A
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000490D
+
+NAME: Video_ClrRect  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000045DA
+
+NAME: Video_ResetMaps  - NUM: 2
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000044E9
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000045FC
+
+NAME: Video_PrevEdit  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004800
+
+NAME: Static02  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000461E
+
+NAME: Video_Switch  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004955
+
+NAME: Video_InitHMI_ZOrder  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000493D
+
+NAME: Video_SetPageColors  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000045A9
+
+NAME: Video_SetEditKey  - NUM: 12
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000049A2
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000049BF
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000049DC
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000049F9
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004A16
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004A33
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004A50
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004A6D
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004A8A
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004AA7
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004AC4
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004AE1
+
+NAME: Video_SendEvent  - NUM: 2
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x000047CC
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000483F
+
+NAME: Video_NextEdit  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000478D
+
+NAME: EditBox03  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004649
+
+NAME: Video_UpdatePageControls  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x0000442D
+
+NAME: Video_AddFontUnicode  - NUM: 1
+	 Patch - TYPE: 0x0 - CODE OFFSET: 0x00004B23
+
+***************************************************
+	MEMORY AREA ACCESS PATCH
+***************************************************
+*
+* List of all references to data allocated in memory areas
+* along with the whole information required by the run-time linker
+*
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #288 OF CODE AREA
+0000	43 01 01 00 20 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D3A
+0008	3A 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #16704 OF CODE AREA
+000C	43 01 01 00 40 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000456A
+0014	6A 45 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #12 OF DATA AREA
+0018	44 04 01 00 0C 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004BDB
+0020	DB 4B 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #16 OF DATA AREA
+0024	44 01 01 00 10 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004C20
+002C	20 4C 00 00 
+
+*
+*	20 REFERENCE(S) TO 8-BIT VAR AT BYTE #17 OF DATA AREA
+0030	44 01 14 00 11 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004907
+0038	07 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000491B
+003C	1B 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004933
+0040	33 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000494B
+0044	4B 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004963
+0048	63 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000049B0
+004C	B0 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000049CD
+0050	CD 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000049EA
+0054	EA 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A07
+0058	07 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A24
+005C	24 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A41
+0060	41 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A5E
+0064	5E 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A7B
+0068	7B 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004A98
+006C	98 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004AB5
+0070	B5 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004AD2
+0074	D2 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004AEF
+0078	EF 4A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B0C
+007C	0C 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B31
+0080	31 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B56
+0084	56 4B 00 00 
+
+*
+*	2 REFERENCE(S) TO 16-BIT VAR AT BYTE #18 OF DATA AREA
+0088	44 02 02 00 12 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000048D7
+0090	D7 48 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000048E3
+0094	E3 48 00 00 
+
+*
+*	9 REFERENCE(S) TO 16-BIT VAR AT BYTE #20 OF DATA AREA
+0098	44 02 09 00 14 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043EC
+00A0	EC 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000443F
+00A4	3F 44 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044A3
+00A8	A3 44 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000496F
+00AC	6F 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B62
+00B0	62 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B7E
+00B4	7E 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004C47
+00B8	47 4C 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004C8D
+00BC	8D 4C 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D06
+00C0	06 4D 00 00 
+
+*
+*	20 REFERENCE(S) TO 16-BIT VAR AT BYTE #22 OF DATA AREA
+00C4	44 02 14 00 16 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004164
+00CC	64 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004170
+00D0	70 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004177
+00D4	77 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004198
+00D8	98 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041A5
+00DC	A5 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041FA
+00E0	FA 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000425A
+00E4	5A 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042A0
+00E8	A0 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042D2
+00EC	D2 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042F2
+00F0	F2 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000435A
+00F4	5A 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004366
+00F8	66 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000436D
+00FC	6D 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000438E
+0100	8E 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004395
+0104	95 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043A1
+0108	A1 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043A8
+010C	A8 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043C9
+0110	C9 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000497B
+0114	7B 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D0F
+0118	0F 4D 00 00 
+
+*
+*	13 REFERENCE(S) TO 16-BIT VAR AT BYTE #24 OF DATA AREA
+011C	44 02 0D 00 18 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041B4
+0124	B4 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041D5
+0128	D5 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041E1
+012C	E1 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004201
+0130	01 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000421F
+0134	1F 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000422B
+0138	2B 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004232
+013C	32 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004253
+0140	53 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004261
+0144	61 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000428B
+0148	8B 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042D9
+014C	D9 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004987
+0150	87 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D18
+0154	18 4D 00 00 
+
+*
+*	9 REFERENCE(S) TO 16-BIT VAR AT BYTE #26 OF DATA AREA
+0158	44 02 09 00 1A 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041E8
+0160	E8 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000427F
+0164	7F 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042C6
+0168	C6 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000042FE
+016C	FE 42 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000430F
+0170	0F 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004316
+0174	16 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004332
+0178	32 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004993
+017C	93 49 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D21
+0180	21 4D 00 00 
+
+*
+*	5 REFERENCE(S) TO 16-BIT VAR AT BYTE #28 OF DATA AREA
+0184	44 02 05 00 1C 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000043F6
+018C	F6 43 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044AB
+0190	AB 44 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B6A
+0194	6A 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004B88
+0198	88 4B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004C97
+019C	97 4C 00 00 
+
+*
+*	1 REFERENCE(S) TO 416-BIT VAR AT BYTE #48 OF DATA AREA
+01A0	44 34 01 00 30 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004BA8
+01A8	A8 4B 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #100 OF DATA AREA
+01AC	44 01 01 00 64 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044B9
+01B4	B9 44 00 00 
+
+*
+*	1 REFERENCE(S) TO 104-BIT VAR AT BYTE #100 OF DATA AREA
+01B8	44 0D 01 00 64 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044CB
+01C0	CB 44 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #101 OF DATA AREA
+01C4	44 02 01 00 65 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044C5
+01CC	C5 44 00 00 
+
+*
+*	3 REFERENCE(S) TO 8-BIT VAR AT BYTE #113 OF DATA AREA
+01D0	44 01 03 00 71 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004423
+01D8	23 44 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000044DF
+01DC	DF 44 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000046A2
+01E0	A2 46 00 00 
+
+*
+*	2 REFERENCE(S) TO 8-BIT VAR AT BYTE #115 OF DATA AREA
+01E4	44 01 02 00 73 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004C74
+01EC	74 4C 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004CD5
+01F0	D5 4C 00 00 
+
+*
+*	2 REFERENCE(S) TO 16-BIT VAR AT BYTE #116 OF DATA AREA
+01F4	44 02 02 00 74 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000041AD
+01FC	AD 41 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000433C
+0200	3C 43 00 00 
+
+*
+*	1 REFERENCE(S) TO 536-BIT VAR AT BYTE #136 OF DATA AREA
+0204	44 43 01 00 88 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004618
+020C	18 46 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #143 OF DATA AREA
+0210	44 02 01 00 8F 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D2A
+0218	2A 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #145 OF DATA AREA
+021C	44 02 01 00 91 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D33
+0224	33 4D 00 00 
+
+*
+*	2 REFERENCE(S) TO 8-BIT VAR AT BYTE #147 OF DATA AREA
+0228	44 01 02 00 93 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004612
+0230	12 46 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004632
+0234	32 46 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #149 OF DATA AREA
+0238	44 04 01 00 95 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D40
+0240	40 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #153 OF DATA AREA
+0244	44 04 01 00 99 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D4B
+024C	4B 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #161 OF DATA AREA
+0250	44 04 01 00 A1 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D51
+0258	51 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #165 OF DATA AREA
+025C	44 04 01 00 A5 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D5B
+0264	5B 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #169 OF DATA AREA
+0268	44 02 01 00 A9 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D66
+0270	66 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #181 OF DATA AREA
+0274	44 04 01 00 B5 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D6E
+027C	6E 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 760-BIT VAR AT BYTE #203 OF DATA AREA
+0280	44 5F 01 00 CB 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004643
+0288	43 46 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #216 OF DATA AREA
+028C	44 02 01 00 D8 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D79
+0294	79 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #218 OF DATA AREA
+0298	44 02 01 00 DA 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D82
+02A0	82 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #220 OF DATA AREA
+02A4	44 02 01 00 DC 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D8B
+02AC	8B 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #222 OF DATA AREA
+02B0	44 02 01 00 DE 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D94
+02B8	94 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #224 OF DATA AREA
+02BC	44 02 01 00 E0 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004D9D
+02C4	9D 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #226 OF DATA AREA
+02C8	44 04 01 00 E2 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DAA
+02D0	AA 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #235 OF DATA AREA
+02D4	44 04 01 00 EB 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DB0
+02DC	B0 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #239 OF DATA AREA
+02E0	44 04 01 00 EF 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DBA
+02E8	BA 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #247 OF DATA AREA
+02EC	44 01 01 00 F7 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DC4
+02F4	C4 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #252 OF DATA AREA
+02F8	44 01 01 00 FC 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DCB
+0300	CB 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #253 OF DATA AREA
+0304	44 01 01 00 FD 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DD2
+030C	D2 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #254 OF DATA AREA
+0310	44 04 01 00 FE 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DD9
+0318	D9 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #258 OF DATA AREA
+031C	44 01 01 00 02 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DE3
+0324	E3 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #263 OF DATA AREA
+0328	44 04 01 00 07 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DEA
+0330	EA 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #267 OF DATA AREA
+0334	44 04 01 00 0B 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DF4
+033C	F4 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #271 OF DATA AREA
+0340	44 04 01 00 0F 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004DFE
+0348	FE 4D 00 00 
+
+*
+*	1 REFERENCE(S) TO 32-BIT VAR AT BYTE #275 OF DATA AREA
+034C	44 04 01 00 13 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E08
+0354	08 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #279 OF DATA AREA
+0358	44 01 01 00 17 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E12
+0360	12 4E 00 00 
+
+*
+*	2 REFERENCE(S) TO 8-BIT VAR AT BYTE #280 OF DATA AREA
+0364	44 01 02 00 18 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000463D
+036C	3D 46 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0000465D
+0370	5D 46 00 00 
+
+*
+*	1 REFERENCE(S) TO 208-BIT VAR AT BYTE #298 OF DATA AREA
+0374	44 1A 01 00 2A 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004CB7
+037C	B7 4C 00 00 
+
+*
+*	1 REFERENCE(S) TO 64-BIT VAR AT BYTE #324 OF DATA AREA
+0380	44 08 01 00 44 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E1E
+0388	1E 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 64-BIT VAR AT BYTE #332 OF DATA AREA
+038C	44 08 01 00 4C 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E29
+0394	29 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 64-BIT VAR AT BYTE #340 OF DATA AREA
+0398	44 08 01 00 54 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E34
+03A0	34 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 64-BIT VAR AT BYTE #348 OF DATA AREA
+03A4	44 08 01 00 5C 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E3F
+03AC	3F 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 48-BIT VAR AT BYTE #356 OF DATA AREA
+03B0	44 06 01 00 64 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E18
+03B8	18 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 48-BIT VAR AT BYTE #362 OF DATA AREA
+03BC	44 06 01 00 6A 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E23
+03C4	23 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 48-BIT VAR AT BYTE #368 OF DATA AREA
+03C8	44 06 01 00 70 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E2E
+03D0	2E 4E 00 00 
+
+*
+*	1 REFERENCE(S) TO 48-BIT VAR AT BYTE #374 OF DATA AREA
+03D4	44 06 01 00 76 01 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x00004E39
+03DC	39 4E 00 00 
+
