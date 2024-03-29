@@ -1,4 +1,4 @@
-# Advnaced_PLCs_Midterm_Project
+# Advanced_PLCs_Midterm_Project
 # Authors: Dan Blanchette and Brent Knopp
 
 
